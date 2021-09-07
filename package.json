@@ -1,0 +1,27 @@
+{
+  "name": "aforo-web-app",
+  "version": "1.0.0",
+  "description": "This is a website for the project Aforo App",
+  "main": "index.html",
+  "scripts": {
+    "start": "npm run",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.14",
+    "lite-server": "^2.3.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.6.0",
+    "bootstrap-social": "^5.1.1",
+    "font-awesome": "^4.7.0",
+    "jquery": "^1.12.4",
+    "popper.js": "^1.16.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/johnhtml/Aforo-Web-App-C3G48PROYECTOG1.git"
+  }
+}
