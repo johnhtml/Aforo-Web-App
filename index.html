@@ -17,6 +17,7 @@
 </head>
 
 <body>
+    <!--Navbar-->
     <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
@@ -36,20 +37,60 @@
                     <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-pencil fa-lg"></span>
                             Registrarse</a></li>
                 </ul>
-                <ul class="navbar-nav centered ">
-                    <li>
+                <ul class="navbar-nav centered">
+                    <li class="nav-item">
                         <span class="navbar-text">
                             <a>
                                 <span class="fa fa-sign-in"></span> Login
                             </a>
                         </span>
                     </li>
-
                 </ul>
-
             </div>
         </div>
     </nav>
+
+    <!--Modal Login-->
+    <div id="loginModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg" role="content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Login</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-sm-8">
+                                <label class="sr-only" for="exampleInputEmail"></label>
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-sm-8">
+                                <label class="sr-only" for="exampleInputPassword"></label>
+                                <input type="password" class="form-control" placeholder="Contraseña">
+                            </div>
+                            <div class="col-sm-auto">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label"> Recordarme</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary btn-sm ml-1">Iniciar sesión</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
     <!-- build:js js/main.js -->
