@@ -35,6 +35,11 @@ body {
   margin: 0px, 20px, 0px, 20px;
 }
 
+.navbar-toggler {
+  height: 40px;
+  width: 60px;
+}
+
 .centered {
   align-items: center;
 }
@@ -47,7 +52,7 @@ body {
 }
 
 .carousel {
-  background: #512DA8;
+  background: #4857df;
 }
 
 .carousel .carousel-item {
@@ -59,6 +64,10 @@ body {
   top: 0;
   left: 0;
   min-height: 300px;
+}
+
+.img-fluid {
+  color: #ffffff;
 }
 
 #carouselButton {
@@ -73,7 +82,8 @@ body {
 }
 
 .modal .modal-header {
-  background: #2f3fd3;;
+  background: #2f3fd3;
+  ;
   color: #ffffff;
 }
 
