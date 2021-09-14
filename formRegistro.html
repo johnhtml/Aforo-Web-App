@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Formulario Registro</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+<body>
+<!--Me falta que se vea rojito el asterisco-->
+<!--Me falta aplicarle un sistema de validación para datos incorrectos-->
+<!--Me falta ponerlo bonito-->
+<!--No sé porque me salen flechitas en el telefono-->
+
+
+<div class= "container-fluid">  
+<div class="form-group mt-4">
+    <div class="col-xl-6 mb-3">
+        <label for="validarNombre">Nombres:<span class="red">*</span></label>
+        <input type="text" class="form-control" id="validarNombre"placeholder="Ingrese sus nombres completos"  name="validarNombre" required>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-lg-6 mb-3">
+        <label for="validarApellidos">Apellidos:<span class="red">*</span></label>
+        <input type="text" class="form-control" id="validarApellidos" placeholder="Ingrese sus Apellidos completos" name="validarApellidos" required>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-4 mb-3">
+        <label for="validarEmail">Email:<span class="red">*</span></label>
+        <input type="email" class="form-control" id="validarEmail" aria-describedby="help"  placeholder="Ingrese su e-mail" name="validarEmail" required>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-4 mb-3">
+        <label for="validarTelefono">Teléfono:<span class="red">*</span></label>
+        <input type="number" class="form-control" id="validarTelefono" placeholder="Ingrese su numero Celular" name="validarTelefono" max="9999999999">
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-4 mb-3">
+        <label for="validarDocumentodeidentidad">Tipo de Documento:<span class="red">*</span></label>
+        <select class="custom-select" id="validarDocumentodeidentidad" name="validarDocumentodeidentidad" required>
+            <option selected disabled value="">Selecciona...</option>
+            <option value="Tarjeta de Identidad">T.I.</option>
+            <option value="Cédula de Ciudadanía">C.C.</option>
+            <option value="Cédula de Extranjería">C.E.</option>
+            <option value="Otro">Otro</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-4 mb-3">
+        <label for="validarNumeroDocumento">Número de Documento:<span class="red">*</span></label>
+        <input type="text" class="form-control" id="validarNumeroDocumento" placeholder="Ingrese el numero sin espacios ni puntos" name="validarNumeroDocumento" required>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-md-4 mb-3">
+        <label for="validarEvento">Evento al que asistirás:<span class="red">*</span></label>
+        <select class="custom-select" id="validarEvento" name="validarEvento" required>
+            <option selected disabled value="">Selecciona...</option>
+            <option value="Evento 1">"Tips para no estresarte entregando Sprint 1"-Maestro César Díaz-</option>
+            <option value="Evento 2">"JavaScript con plastilina"- Maestro César Díaz-</option>
+            <option value="Evento 3">"Programadores felices que duermen solo 2 horas diarias "-Maestro César Díaz-</option>
+            </select>
+    </div>
+</div>
+
+
+</div>
+
+<div class="form-group">
+    <button class="btn btn-primary" type="submit" name="submit">Enviar</button>
+    <button class="btn btn-success" type="reset" name="reset">Limpiar</button>
+</div>
+
+</form>
+</div>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"crossorigin="anonymous"></script>
+</body>
+</html>
