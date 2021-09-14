@@ -19,37 +19,61 @@
 <!--No sé porque me salen flechitas en el telefono-->
 
 
-<div class= "container-fluid">  
-<div class="form-group mt-4">
-    <div class="col-xl-6 mb-3">
-        <label for="validarNombre">Nombres:<span class="red">*</span></label>
-        <input type="text" class="form-control" id="validarNombre"placeholder="Ingrese sus nombres completos"  name="validarNombre" required>
-    </div>
-</div>
+<div class= "container-fluid">
+    <!--Navbar-->
+    <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
+        <div class="container">
+            <button class="navbar-toggler" id="button-toggler" data-toggle="collapse" data-target="#Navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <a class="navbar-brand" href="#"><img src="img/logo.png" alt="logo" height="30" width="41" class=""></a>
+    
+            <div class="collapse navbar-collapse" id="Navbar">
+                <ul class="navbar-nav ml-auto centered">
+                    <li class="nav-item active"><a class="nav-link" href="#"><span class="fa fa-home"></span> Home </a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="./aboutus.html"><span class="fa fa-code fa-lg"></span>
+                            Acerca de </a></li>
+                    <li class="nav-item"><a class="nav-link" href="./contactus.html"><span
+                                class="fa fa-address-book fa-lg"></span> Contacto </a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-pencil fa-lg"></span>
+                            Registrarse </a></li>
+                </ul>
+                <ul class="navbar-nav centered">
+                    <li class="nav-item">
+                        <span class="navbar-text">
+                            <a>
+                                <span class="fa fa-sign-in"></span> Login
+                            </a>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<div class="form-group">
-    <div class="col-lg-6 mb-3">
+<form class="container mt-5 col-md-6 ">
+    <div class="form-group">
+        <label for="validarApellidos">Nombres:<span class="red">*</span></label>
+        <input type="text" class="form-control" id="validarApellidos" placeholder="Ingrese sus Nombres completos"
+            name="validarApellidos" required>
+    </div>
+    <div class="form-group">
         <label for="validarApellidos">Apellidos:<span class="red">*</span></label>
-        <input type="text" class="form-control" id="validarApellidos" placeholder="Ingrese sus Apellidos completos" name="validarApellidos" required>
+        <input type="text" class="form-control" id="validarApellidos" placeholder="Ingrese sus Apellidos completos"
+            name="validarApellidos" required>
     </div>
-</div>
-
-<div class="form-group">
-    <div class="col-md-4 mb-3">
+    <div class="form-group">
         <label for="validarEmail">Email:<span class="red">*</span></label>
-        <input type="email" class="form-control" id="validarEmail" aria-describedby="help"  placeholder="Ingrese su e-mail" name="validarEmail" required>
+        <input type="email" class="form-control" id="validarEmail" aria-describedby="help" placeholder="Ingrese su e-mail"
+            name="validarEmail" required>
     </div>
-</div>
-
-<div class="form-group">
-    <div class="col-md-4 mb-3">
+    <div class="form-group">
         <label for="validarTelefono">Teléfono:<span class="red">*</span></label>
-        <input type="number" class="form-control" id="validarTelefono" placeholder="Ingrese su numero Celular" name="validarTelefono" max="9999999999">
+        <input type="number" class="form-control" id="validarTelefono" placeholder="Ingrese su numero Celular"name="validarTelefono">
     </div>
-</div>
-
-<div class="form-group">
-    <div class="col-md-4 mb-3">
+    <div class="form-group">
         <label for="validarDocumentodeidentidad">Tipo de Documento:<span class="red">*</span></label>
         <select class="custom-select" id="validarDocumentodeidentidad" name="validarDocumentodeidentidad" required>
             <option selected disabled value="">Selecciona...</option>
@@ -59,34 +83,15 @@
             <option value="Otro">Otro</option>
         </select>
     </div>
-</div>
-
-<div class="form-group">
-    <div class="col-md-4 mb-3">
+    <div class="form-group">
         <label for="validarNumeroDocumento">Número de Documento:<span class="red">*</span></label>
-        <input type="text" class="form-control" id="validarNumeroDocumento" placeholder="Ingrese el numero sin espacios ni puntos" name="validarNumeroDocumento" required>
+        <input type="number" class="form-control" id="validarNumeroDocumento"
+            placeholder="Ingrese el numero sin espacios ni puntos" name="validarNumeroDocumento" required>
     </div>
-</div>
-<div class="form-group">
-    <div class="col-md-4 mb-3">
-        <label for="validarEvento">Evento al que asistirás:<span class="red">*</span></label>
-        <select class="custom-select" id="validarEvento" name="validarEvento" required>
-            <option selected disabled value="">Selecciona...</option>
-            <option value="Evento 1">"Tips para no estresarte entregando Sprint 1"-Maestro César Díaz-</option>
-            <option value="Evento 2">"JavaScript con plastilina"- Maestro César Díaz-</option>
-            <option value="Evento 3">"Programadores felices que duermen solo 2 horas diarias "-Maestro César Díaz-</option>
-            </select>
-    </div>
-</div>
-
-
-</div>
-
-<div class="form-group">
-    <button class="btn btn-primary" type="submit" name="submit">Enviar</button>
-    <button class="btn btn-success" type="reset" name="reset">Limpiar</button>
-</div>
-
+    <div>          
+            <button class="btn btn-primary" type="submit" name="submit">Enviar</button>
+            <button class="btn btn-success" type="reset" name="reset">Limpiar</button>
+        </div>
 </form>
 </div>
 
