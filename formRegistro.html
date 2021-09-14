@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Formulario Registro</title>
+    <!-- CSS only -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<!--Me falta que se vea rojito el asterisco-->
+<!--Me falta aplicarle un sistema de validación para datos incorrectos-->
+<!--Me falta ponerlo bonito-->
+<!--No sé porque me salen flechitas en el telefono-->
+
+
+<div class= "container-fluid">
+    <!--Navbar-->
+    <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
+        <div class="container">
+            <button class="navbar-toggler" id="button-toggler" data-toggle="collapse" data-target="#Navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <a class="navbar-brand" href="#"><img src="img/logo.png" alt="logo" height="30" width="41" class=""></a>
+    
+            <div class="collapse navbar-collapse" id="Navbar">
+                <ul class="navbar-nav ml-auto centered">
+                    <li class="nav-item active"><a class="nav-link" href="#"><span class="fa fa-home"></span> Home </a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="./aboutus.html"><span class="fa fa-code fa-lg"></span>
+                            Acerca de </a></li>
+                    <li class="nav-item"><a class="nav-link" href="./contactus.html"><span
+                                class="fa fa-address-book fa-lg"></span> Contacto </a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-pencil fa-lg"></span>
+                            Registrarse </a></li>
+                </ul>
+                <ul class="navbar-nav centered">
+                    <li class="nav-item">
+                        <span class="navbar-text">
+                            <a>
+                                <span class="fa fa-sign-in"></span> Login
+                            </a>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<form class="container mt-5 col-md-6 ">
+    <div class="form-group">
+        <label for="validarApellidos">Nombres:<span class="red">*</span></label>
+        <input type="text" class="form-control" id="validarApellidos" placeholder="Ingrese sus Nombres completos"
+            name="validarApellidos" required>
+    </div>
+    <div class="form-group">
+        <label for="validarApellidos">Apellidos:<span class="red">*</span></label>
+        <input type="text" class="form-control" id="validarApellidos" placeholder="Ingrese sus Apellidos completos"
+            name="validarApellidos" required>
+    </div>
+    <div class="form-group">
+        <label for="validarEmail">Email:<span class="red">*</span></label>
+        <input type="email" class="form-control" id="validarEmail" aria-describedby="help" placeholder="Ingrese su e-mail"
+            name="validarEmail" required>
+    </div>
+    <div class="form-group">
+        <label for="validarTelefono">Teléfono:<span class="red">*</span></label>
+        <input type="number" class="form-control" id="validarTelefono" placeholder="Ingrese su numero Celular"name="validarTelefono">
+    </div>
+    <div class="form-group">
+        <label for="validarDocumentodeidentidad">Tipo de Documento:<span class="red">*</span></label>
+        <select class="custom-select" id="validarDocumentodeidentidad" name="validarDocumentodeidentidad" required>
+            <option selected disabled value="">Selecciona...</option>
+            <option value="Tarjeta de Identidad">T.I.</option>
+            <option value="Cédula de Ciudadanía">C.C.</option>
+            <option value="Cédula de Extranjería">C.E.</option>
+            <option value="Otro">Otro</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="validarNumeroDocumento">Número de Documento:<span class="red">*</span></label>
+        <input type="number" class="form-control" id="validarNumeroDocumento"
+            placeholder="Ingrese el numero sin espacios ni puntos" name="validarNumeroDocumento" required>
+    </div>
+    <div>          
+            <button class="btn btn-primary" type="submit" name="submit">Enviar</button>
+            <button class="btn btn-success" type="reset" name="reset">Limpiar</button>
+        </div>
+</form>
+</div>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
