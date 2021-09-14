@@ -28,7 +28,7 @@ body {
 }
 
 .navbar-dark {
-  background-color: #2f3fd3;
+  background-color: #9b0f94;
 }
 
 .nav-item {
@@ -38,6 +38,10 @@ body {
 .navbar-toggler {
   height: 40px;
   width: 60px;
+}
+
+.bg-dark {
+  background-color: #6C757D;
 }
 
 .centered {
@@ -52,7 +56,7 @@ body {
 }
 
 .carousel {
-  background: #4857df;
+  background: #50044c;;
 }
 
 .carousel .carousel-item {
@@ -82,7 +86,7 @@ body {
 }
 
 .modal .modal-header {
-  background: #2f3fd3;
+  background: #9b0f94;
   ;
   color: #ffffff;
 }
