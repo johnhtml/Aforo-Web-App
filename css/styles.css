@@ -102,3 +102,7 @@ body {
 .modal .modal-body .card {
   background-color: #ffffff;
 }
+
+#personal-buttons {
+  margin-bottom: 30px;
+}
