@@ -1,27 +1,51 @@
 {
   "name": "aforo-web-app",
   "version": "1.0.0",
+  "private": true,
   "description": "This is a website for the project Aforo App",
-  "main": "index.html",
+  "author": "",
   "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint",
     "start": "npm run",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "browser-sync": "^2.26.14",
-    "lite-server": "^2.3.0"
-  },
+  "main": "index.html",
   "dependencies": {
     "bootstrap": "^4.6.0",
     "bootstrap-social": "^5.1.1",
+    "core-js": "^3.6.5",
     "font-awesome": "^4.7.0",
     "jquery": "^1.12.4",
-    "popper.js": "^1.16.1"
+    "popper.js": "^1.16.1",
+    "vue": "^2.6.11",
+    "vue-router": "^3.2.0"
   },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-unit-jest": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/test-utils": "^1.0.3",
+    "babel-eslint": "^10.1.0",
+    "browser-sync": "^2.26.14",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "lite-server": "^2.3.0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "_id": "aforo-web-app@1.0.0",
+  "bugs": {
+    "url": "https://github.com/johnhtml/Aforo-Web-App-C3G48PROYECTOG1/issues"
+  },
+  "homepage": "https://github.com/johnhtml/Aforo-Web-App-C3G48PROYECTOG1#readme",
+  "license": "ISC",
+  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
-    "url": "https://github.com/johnhtml/Aforo-Web-App-C3G48PROYECTOG1.git"
+    "url": "git+https://github.com/johnhtml/Aforo-Web-App-C3G48PROYECTOG1.git"
   }
 }
