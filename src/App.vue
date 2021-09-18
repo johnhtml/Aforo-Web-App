@@ -1,18 +1,11 @@
 <template>
-  <!-- App.vue -->
-
   <v-app>
-    <v-navigation-drawer app>
-      <p>PQCOSO</p>
+    <v-navigation-drawer v-model="drawer" app>
+      <Menu></Menu>
     </v-navigation-drawer>
 
-    <v-app-bar
-      absolute
-      color="white"
-      elevate-on-scroll
-      scroll-target="#scrolling-techniques-7"
-    >
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+    <v-app-bar app absolute color="pink darken-2">
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-toolbar-title>Title</v-toolbar-title>
 
@@ -36,22 +29,28 @@
       <!-- Provides the application the proper gutter -->
       <v-container fluid>
         <!-- If using vue-router -->
-        <v-parallax
-    height="300"
-    src="https://cdn.vuetifyjs.com/images/parallax/material2.jpg"
-  ></v-parallax>
         <router-view></router-view>
       </v-container>
     </v-main>
-
-    <v-footer app>
-      <!-- -->
+    <v-spacer>_</v-spacer>
+    <v-footer absolute inset app dark padless bottom>
+      <Footer></Footer>
     </v-footer>
   </v-app>
 </template>
 
 <script>
+import Menu from "./components/MenuComponent";
+import Footer from "./components/FooterComponent";
+
 export default {
-  data: () => ({ drawer: null }),
+  components: {
+    Menu,
+    Footer
+  },
+  data: () => ({
+    drawer: false,
+    icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
+  }),
 };
 </script>
