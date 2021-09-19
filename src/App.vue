@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" app>
+    <v-navigation-drawer v-model="drawer" app bottom floating temporary>
       <Menu></Menu>
     </v-navigation-drawer>
 
@@ -49,8 +49,7 @@ export default {
     Footer
   },
   data: () => ({
-    drawer: false,
-    icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
+    drawer: false
   }),
 };
 </script>
