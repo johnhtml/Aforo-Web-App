@@ -55,6 +55,9 @@ export default {
       admin: true,
     },
   }),
+  mounted() {
+    localStorage.setItem("user", JSON.stringify(this.user));
+  },
 };
 </script>
 
