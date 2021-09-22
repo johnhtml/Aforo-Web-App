@@ -69,7 +69,7 @@
       class="mr-4"
       @click="validate"
     >
-      Validate
+      Enviar
     </v-btn>
 
     <v-btn
@@ -77,7 +77,7 @@
       class="mr-4"
       @click="reset"
     >
-      Reset Form
+      Limpiar
     </v-btn>
 
   </v-form>
