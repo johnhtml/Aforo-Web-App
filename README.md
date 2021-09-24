@@ -5,8 +5,8 @@
 ### Backend Setup
 ```
 1. Crear archivo .env en la carpeta del Back.
-2. Agregar el puerto al archivo .env. --->   PORT=3000
-3. ejecutar el comando npm install dentro de la carpeta Back.
+2. Agregar el puerto al archivo .env.  "PORT=3000"
+3. Ejecutar el comando "npm install" dentro de la carpeta Back.
 ```
 
 ### Run Backend Server.
