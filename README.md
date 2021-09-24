@@ -1,4 +1,19 @@
-# aforo-web-app
+# aforo-web-app Front
+
+## Project setup
+```
+1. Crear archivo .env en la carpeta del Back.
+2. Agregar el puerto al archivo .env. --->   PORT=3000
+3. ejecutar el comando npm install dentro de la carpeta Back.
+```
+
+## Run Back Server.
+```
+Ejecutar el comando "npm run dev"
+````
+
+
+# aforo-web-app Front
 
 ## Project setup
 ```
