@@ -2,23 +2,27 @@
 
 ## BackEnd - Aforo-Web-App
 
-### Backend Setup
+### Backend Configuración Inicial
 ```
-1. Crear archivo .env en la carpeta del Back.
-2. Agregar el puerto al archivo .env.  "PORT=3000"
-3. Ejecutar el comando "npm install" dentro de la carpeta Back.
+1. Entrar a la carpeta Back
+2. Ejecutar el comando "npm install"
+3. Crear un archivo con nombre ".env" en la carpeta del Back.
+4. Agregar el puerto dentro del archivo .env --> "PORT=3000"
+5. Ejecutar el comando "npm run dev" dentro de la carpeta Back.
 ```
 
 ### Run Backend Server.
 ```
-Ejecutar el comando "npm run dev"
+1.Ejecutar el comando "npm run dev"
 ```
 
 ## FrontEnd - Aforo-Web-App
 
-### Frontend Setup
+### Backend Configuración Inicial
 ```
-npm install
+1. Entrar a la carpeta Front
+2. Ejecutar el comando "npm install"
+3. Ejecutar el comando "npm run serve"
 ```
 
 ### Compiles and hot-reloads for development
