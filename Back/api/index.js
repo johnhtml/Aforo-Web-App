@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
 
-require('./routes/events')(router)
+require('./routes/event')(router)
 
 module.exports = router

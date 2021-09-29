@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
-const Events = require('../../models/events')
+const Event = require('../../models/event')
 
 module.exports = function (router) {
   
   //GET: todos los eventos
-  router.get('/events', function (req, res) {
-    Events.find()
-      .sort({ eventDate: -1 })
+  router.get('/event', function (req, res) {
+    Event.find()
+      //.sort({ eventDate: -1 })
       .exec()
       .then(docs => res.status(200)
         .json(docs))
@@ -18,7 +18,7 @@ module.exports = function (router) {
   })
 
   //POST: Crear un nuevo evento en la colección eventos.
-  router.post('/events', function (req, res) {
+  router.post('/event', function (req, res) {
     const event = new Event(req.body)
     event.save(function (err, note) {
       if (err) {
