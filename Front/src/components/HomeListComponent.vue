@@ -15,7 +15,7 @@
         <v-card-title>{{ evento.name }}</v-card-title>
 
         <v-card-text>
-          <v-row align="center" class="mx-0">
+          <!-- <v-row align="center" class="mx-0">
             <v-rating
               :value="4.5"
               color="amber"
@@ -24,7 +24,7 @@
               readonly
               size="14"
             ></v-rating>
-          </v-row>
+          </v-row> -->
 
           <div class="my-4 text-subtitle-1">$ • {{ evento.price }}</div>
 
