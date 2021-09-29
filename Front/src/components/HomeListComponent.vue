@@ -61,44 +61,7 @@
 import { getAllEvents } from "../Services/EventsService"
 export default {
   data: () => ({
-    events: [
-      {
-        id: 1,
-        name: "Despedida de fin de año en Aquiles S.A.S.",
-        description:
-          "Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
-        price: "Gratis",
-        image:
-          "https://cdn.marlonbranding.net/wp-content/uploads/2020/04/eventos-online.jpg",
-        dates: ["31 octubre 2021", "31 Noviembre 2021"],
-        selection: 1,
-        loading: false,
-      },
-      {
-        id: 2,
-        name: "Despedida de fin de año en Aquiles S.A.S.",
-        description:
-          "Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
-        price: "Gratis",
-        image:
-          "https://blog.sirena.app/hs-fs/hubfs/eventos_negocios-1.jpg?width=1050&name=eventos_negocios-1.jpg",
-        dates: ["31 octubre 2021", "31 Noviembre 2021"],
-        selection: 1,
-        loading: false,
-      },
-      {
-        id: 3,
-        name: "Feria de exposición tecnológica",
-        description:
-          "Small plates, salads & sandwiches - an intimate setting with 12 indoor seats plus patio seating.",
-        price: "Gratis",
-        image:
-          "https://www.marketingdirecto.com/wp-content/uploads/2019/07/EVENTOPLUS-EVENTODAY-300x174.jpg",
-        dates: ["31 octubre 2021", "31 Noviembre 2021"],
-        selection: 1,
-        loading: false,
-      },
-    ],
+    events: [],
   }),
   mounted () {
     getAllEvents()
