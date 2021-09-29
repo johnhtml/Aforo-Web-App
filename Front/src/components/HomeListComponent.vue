@@ -1,6 +1,11 @@
 <template>
   <v-row>
-    <v-col sm="12" md="6" lg="4" v-for="evento in events" :key="evento.id">
+    <ul>
+      <li v-for="event in events" :key="event._id">
+        {{event}}
+      </li>
+    </ul>
+    <v-col sm="12" md="6" lg="4" v-for="event in events" :key="event._id">
       <v-card :loading="evento.loading" class="mx-auto my-12" max-width="374">
         <template slot="progress">
           <v-progress-linear
@@ -10,9 +15,9 @@
           ></v-progress-linear>
         </template>
 
-        <v-img height="200" :src="evento.image"></v-img>
+        <v-img height="200" :src="event.image"></v-img>
 
-        <v-card-title>{{ evento.name }}</v-card-title>
+        <v-card-title>{{ event.name }}</v-card-title>
 
         <v-card-text>
           <!-- <v-row align="center" class="mx-0">
@@ -26,10 +31,10 @@
             ></v-rating>
           </v-row> -->
 
-          <div class="my-4 text-subtitle-1">$ • {{ evento.price }}</div>
+          <div class="my-4 text-subtitle-1">$ • {{ event.price }}</div>
 
           <div>
-            {{ evento.description }}
+            {{ event.description }}
           </div>
         </v-card-text>
 
@@ -39,7 +44,7 @@
 
         <v-card-text>
           <v-chip-group
-            v-model="evento.selection"
+            v-model="event.selection"
             active-class="deep-purple accent-4 white--text"
             column
           >
@@ -59,6 +64,7 @@
 
 <script>
 import { getAllEvents } from "../Services/EventsService"
+
 export default {
   data: () => ({
     events: [],
