@@ -58,6 +58,7 @@
 </template>
 
 <script>
+import { getAllEvents } from "../Services/EventsService"
 export default {
   data: () => ({
     events: [
@@ -99,7 +100,13 @@ export default {
       },
     ],
   }),
-
+  mounted () {
+    getAllEvents()
+    .then(res => {
+      this.events = res.data
+    })
+    .catch((err)=>console.error(err))
+  },
   methods: {
     reserve(evento) {
       evento.loading = true;
