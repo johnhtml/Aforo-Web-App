@@ -5,6 +5,15 @@ import vuetify from './plugins/vuetify'
 
 Vue.config.productionTip = false
 
+// Filtro para dar formato de numero
+var numeral = require("numeral")
+Vue.filter("formatNumber", (value) => numeral(value).format("0,0"))
+
+// Filtro para dar formato de fecha
+import Moment from 'moment'
+Moment.locale('es')
+Vue.filter('longDate',(value)=>Moment(value).format('LLLL'))
+
 new Vue({
   router,
   vuetify,

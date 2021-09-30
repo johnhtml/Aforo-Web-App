@@ -1,12 +1,7 @@
 <template>
   <v-row>
-    <ul>
-      <li v-for="event in events" :key="event._id">
-        {{event}}
-      </li>
-    </ul>
     <v-col sm="12" md="6" lg="4" v-for="event in events" :key="event._id">
-      <v-card :loading="event.loading" class="mx-auto my-12" max-width="374">
+      <v-card :loading="event.loading" class="mx-auto my-12" max-width="400" min-height="550">
         <template slot="progress">
           <v-progress-linear
             color="deep-purple"
@@ -20,18 +15,8 @@
         <v-card-title>{{ event.name }}</v-card-title>
 
         <v-card-text>
-          <v-row align="center" class="mx-0">
-            <v-rating
-              :value="4.5"
-              color="amber"
-              dense
-              half-increments
-              readonly
-              size="14"
-            ></v-rating>
-          </v-row>
 
-          <div class="my-4 text-subtitle-1">$ • {{ event.price.$numberDecimal }}</div>
+          <div class="my-2 text-subtitle-1">$ {{ event.price.$numberDecimal | formatNumber}}</div>
 
           <div>
             {{ event.description }}
@@ -40,7 +25,7 @@
 
         <v-divider class="mx-4"></v-divider>
 
-        <v-card-title>Selecciona una fecha</v-card-title>
+        <v-card-title>Fechas disponibles</v-card-title>
 
         <v-card-text>
           <v-chip-group
@@ -48,7 +33,7 @@
             active-class="deep-purple accent-4 white--text"
             column
           >
-            <v-chip v-for="date in event.eventDates" :key="date">{{ date.eventDate }}</v-chip>
+            <v-chip v-for="date in event.eventDates" :key="date">{{ date.eventDate.toString() | longDate }}</v-chip>
           </v-chip-group>
         </v-card-text>  
 
