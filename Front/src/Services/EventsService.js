@@ -1,6 +1,6 @@
 import httpClient from "./httpClient"
 
-const END_POINT = "/api/events"
+const END_POINT = "/api/event"
 
 const getAllEvents = () => httpClient.get(END_POINT)
 

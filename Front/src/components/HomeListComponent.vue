@@ -6,7 +6,7 @@
       </li>
     </ul>
     <v-col sm="12" md="6" lg="4" v-for="event in events" :key="event._id">
-      <v-card :loading="evento.loading" class="mx-auto my-12" max-width="374">
+      <v-card :loading="event.loading" class="mx-auto my-12" max-width="374">
         <template slot="progress">
           <v-progress-linear
             color="deep-purple"
@@ -20,7 +20,7 @@
         <v-card-title>{{ event.name }}</v-card-title>
 
         <v-card-text>
-          <!-- <v-row align="center" class="mx-0">
+          <v-row align="center" class="mx-0">
             <v-rating
               :value="4.5"
               color="amber"
@@ -29,9 +29,9 @@
               readonly
               size="14"
             ></v-rating>
-          </v-row> -->
+          </v-row>
 
-          <div class="my-4 text-subtitle-1">$ • {{ event.price }}</div>
+          <div class="my-4 text-subtitle-1">$ • {{ event.price.$numberDecimal }}</div>
 
           <div>
             {{ event.description }}
@@ -48,9 +48,9 @@
             active-class="deep-purple accent-4 white--text"
             column
           >
-            <v-chip v-for="date in evento.dates" :key="date">{{ date }}</v-chip>
+            <v-chip v-for="date in event.eventDates" :key="date">{{ date.eventDate }}</v-chip>
           </v-chip-group>
-        </v-card-text>
+        </v-card-text>  
 
         <v-card-actions>
           <v-btn color="deep-purple lighten-2" text @click="reserve(evento)">
