@@ -36,8 +36,4 @@ const db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error'))
 db.once('open', function () {
   console.log('Connected to MongoDB')
-  // Add mongoDB connection in later... first just run app.
-  app.listen(app.get('port'), function () {
-    console.log(`API Server Listening on port ${app.get('port')}`)
-  })
 })
