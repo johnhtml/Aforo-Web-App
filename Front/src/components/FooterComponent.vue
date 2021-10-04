@@ -1,7 +1,14 @@
 <template>
-  <!-- --><v-card flat tile class="lighten-1 white--text text-center">
+  <v-card 
+    color="black" 
+    flat 
+    tile 
+    class="lighten-1 white--text text-center">
     <v-card-text>
-      <v-btn v-for="icon in icons" :key="icon" class="mx-4 white--text" icon>
+      <v-btn 
+        v-for="icon in icons" :key="icon" 
+        class="mx-4 white--text" 
+        icon>
         <v-icon size="24px">
           {{ icon }}
         </v-icon>
@@ -15,7 +22,7 @@
       Duis commodo vitae velit et faucibus.
     </v-card-text>
 
-    <v-divider></v-divider>
+    <v-divider dark></v-divider>
 
     <v-card-text class="white--text">
       {{ new Date().getFullYear() }} — <strong>Aforo App</strong>
