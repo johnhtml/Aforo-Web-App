@@ -1,17 +1,17 @@
 <template>
   <v-main app>
     <v-container class="overflow-y-auto" id="main">
-      <home-content-component></home-content-component>
+        <router-view></router-view>
     </v-container>
   </v-main>
 </template>
 
 <script>
 
-import HomeContentComponent from './HomeContentComponent.vue';
+// import HomeContentComponent from './HomeContentComponent.vue';
 export default {
   components: {
-    HomeContentComponent
+    // HomeContentComponent
   },
 
   data: () => ({
