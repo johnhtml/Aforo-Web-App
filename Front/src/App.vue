@@ -1,12 +1,13 @@
 <template>
   <v-app>
-    <nav-bar 
+    <nav-bar
       :brandName="appName" 
       :webLinks="navLinks"/>
     <main-content/>
     <app-footer 
       :brandName="appName" 
-      :webLinks="navLinks"/>
+      :webLinks="navLinks"
+      :categories="categ"/>
   </v-app>
 </template>
 
@@ -44,7 +45,10 @@ export default {
         name:"Signup",
         text:"Registrase"
       },
+    ],
+    categ:[
+      "Empanadas","Hamburguesas","Fiestas de Quince",'Fiestas de cumpleaños',"Conciertos","Carreras de caballos", "Fiestas","Misas"
     ]
-  }),
+  })
 };
 </script>
