@@ -8,11 +8,11 @@
     <template v-slot:next="{ on, attrs }">
       <v-btn color="pink darken-2" v-bind="attrs" v-on="on">Next slide</v-btn>
     </template>
-    <v-carousel-item v-for="slide in slides" :key="slide.image">
+    <v-carousel-item v-for="event in eventList" :key="event._id">
       <v-sheet height="100%">
         <v-row class="fill-height" align="center" justify="center">
-          <v-img height="100%" :src="slide.image">
-            <div class="d-flex justify-center text-h2 mt-10">  {{ slide.titulo }} </div>
+          <v-img height="100%" :src="event.image">
+            <div class="d-flex justify-center text-h2 mt-10">  {{ event.name }} </div>
           </v-img>
         </v-row>
       </v-sheet>
@@ -22,26 +22,15 @@
 
 <script>
 export default {
+  
+  props: {
+    eventList:{
+      type:Array,
+      default:()=>{[]}
+    }
+  },
   data() {
     return {
-      
-      slides: [
-        {
-          titulo:"Concierto para Programadores",
-          image:
-          "https://cdn.marlonbranding.net/wp-content/uploads/2020/04/eventos-online.jpg"
-        },
-        {
-          titulo:"Musical niños",
-          image:
-          "https://www.etapainfantil.com/wp-content/uploads/2015/12/Instrumentos-musicales-infantiles-e1451302057587.jpg.webp"
-        },
-        {
-          titulo:"Car Audio Taiwan",
-          image:
-          "https://cnwebsite.blob.core.windows.net/files/2019/06/62192Car-Audio-Chica-Pionner-Ofc.jpg"
-        }
-      ],
     };
   },
 };

@@ -3,6 +3,7 @@
     <nav-bar
       :brandName="appName" 
       :webLinks="navLinks"/>
+    <!-- <drawerNavBar/> -->
     <main-content/>
     <app-footer 
       :brandName="appName" 
@@ -13,6 +14,7 @@
 
 <script>
 import NavBar from './components/appBarComponents/NavBar.vue'
+// import DrawerNavBar from './components/appBarComponents/drawerNavBar.vue'
 import MainContent from './components/MainContent.vue'
 import AppFooter from './components/AppFooter.vue'
 
@@ -21,6 +23,7 @@ export default {
 
   components: {
     NavBar,
+    // DrawerNavBar,
     MainContent,
     AppFooter
 
@@ -37,21 +40,21 @@ export default {
       {
         name:"About",
         text:"Nosotros",
-        icon:"mdi-home"
+        icon:"mdi-clipboard-account-outline"
       },
       {
         name:"Login",
         text:"Log in",
-        icon:"mdi-home"
+        icon:"mdi-account"
       },
       {
         name:"Signup",
         text:"Registrase",
-        icon:"mdi-home"
+        icon:"mdi-account-plus"
       },
     ],
     categ:[
-      "Empanadas","Hamburguesas","Fiestas de Quince",'Fiestas de cumpleaños',"Conciertos","Carreras de caballos", "Fiestas","Misas"
+      "Cine","Chiquitecas","Conciertos","Carreras", "Fiestas","Misas", "Futbol", 
     ]
   })
 };

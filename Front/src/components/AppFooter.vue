@@ -51,21 +51,11 @@
             class="my-2 d-flex d-md-inline-flex"
           >
             
-            <v-icon class="mr-2 pb-1">{{link.icon}}</v-icon>
+            <v-icon class="pb-1 pr-1">{{link.icon}}</v-icon>
             {{ link.text }}
           </v-btn>
-        
-        <!-- <v-row
-          justify="center"
-          no-gutters
-        >
-          
-        </v-row> -->
       </v-col>
     </v-row>
-      
-      
-    
   </v-footer>
 </template>
 

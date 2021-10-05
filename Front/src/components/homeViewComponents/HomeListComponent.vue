@@ -1,6 +1,6 @@
 <template>
   <v-row>
-    <v-col sm="12" md="6" lg="4" v-for="event in events" :key="event._id">
+    <v-col sm="12" md="6" lg="4" v-for="event in eventList" :key="event._id">
       <v-card :loading="event.loading" class="mx-auto my-12" max-width="400" min-height="550">
         <template slot="progress">
           <v-progress-linear
@@ -48,19 +48,15 @@
 </template>
 
 <script>
-import { getAllEvents } from "../../Services/EventsService"
-
 export default {
-  data: () => ({
-    events: [],
-  }),
-  mounted () {
-    getAllEvents()
-    .then(res => {
-      this.events = res.data
-    })
-    .catch((err)=>console.error(err))
+  props: {
+    eventList:{
+      type:Array,
+      default:()=>{[]}
+    }
   },
+  data: () => ({
+  }),
   methods: {
     reserve(evento) {
       evento.loading = true;
