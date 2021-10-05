@@ -50,6 +50,8 @@
             dark
             class="my-2 d-flex d-md-inline-flex"
           >
+            
+            <v-icon class="mr-2 pb-1">{{link.icon}}</v-icon>
             {{ link.text }}
           </v-btn>
         

@@ -16,7 +16,8 @@
               :key="link.name"
               :to="{name:`${link.name}`}"
               plain>
-            {{link.text}}
+              <v-icon class="mr-2 pb-1">{{link.icon}}</v-icon>
+              {{link.text}}
             </v-btn>
           </v-template>
       </v-app-bar>

@@ -31,19 +31,23 @@ export default {
     navLinks: [
       {
         name:"Home",
-        text:"Home"
+        text:"Home",
+        icon:"mdi-home"
       },
       {
         name:"About",
-        text:"Nosotros"
+        text:"Nosotros",
+        icon:"mdi-home"
       },
       {
         name:"Login",
-        text:"Log in"
+        text:"Log in",
+        icon:"mdi-home"
       },
       {
         name:"Signup",
-        text:"Registrase"
+        text:"Registrase",
+        icon:"mdi-home"
       },
     ],
     categ:[
