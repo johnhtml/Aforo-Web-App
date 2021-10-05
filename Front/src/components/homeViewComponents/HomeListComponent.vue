@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import { getAllEvents } from "../Services/EventsService"
+import { getAllEvents } from "../../Services/EventsService"
 
 export default {
   data: () => ({

@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import CarouselComponent from '../components/CarouselComponent.vue';
-import HomeContentComponent from '../components/HomeContentComponent.vue';
+import CarouselComponent from '../components/homeViewComponents/CarouselComponent.vue';
+import HomeContentComponent from '../components/homeViewComponents/HomeContentComponent.vue';
 
 export default {
   components: {

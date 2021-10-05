@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import NavBar from './components/menuComponents/NavBar.vue'
+import NavBar from './components/appBarComponents/NavBar.vue'
 import MainContent from './components/MainContent.vue'
 import AppFooter from './components/AppFooter.vue'
 
