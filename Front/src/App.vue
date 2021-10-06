@@ -30,31 +30,38 @@ export default {
   },
 
   data: () => ({
-    appName:"Aforo App",
+    appName: "Aforo App",
     navLinks: [
       {
-        name:"Home",
-        text:"Home",
-        icon:"mdi-home"
+        name: "Home",
+        text: "Home",
+        icon: "mdi-home",
       },
       {
-        name:"About",
-        text:"Nosotros",
-        icon:"mdi-clipboard-account-outline"
+        name: "About",
+        text: "Nosotros",
+        icon: "mdi-clipboard-account-outline",
       },
       {
-        name:"Login",
-        text:"Log in",
-        icon:"mdi-account"
+        name: "Login",
+        text: "Log in",
+        icon: "mdi-account",
       },
       {
-        name:"Signup",
-        text:"Registrase",
-        icon:"mdi-account-plus"
-      }
+        name: "Signup",
+        text: "Registrase",
+        icon: "mdi-account-plus",
+      },
     ],
-    categ:[
-      "Cine","Chiquitecas","Conciertos","Carreras", "Fiestas","Misas", "Futbol", 
+    events: [],
+    categ: [
+      "Cine",
+      "Chiquitecas",
+      "Conciertos",
+      "Carreras",
+      "Fiestas",
+      "Misas",
+      "Futbol",
     ]
   })
 };

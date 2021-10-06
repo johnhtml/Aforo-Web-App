@@ -8,7 +8,7 @@
     <template v-slot:next="{ on, attrs }">
       <v-btn color="pink darken-2" v-bind="attrs" v-on="on">Next slide</v-btn>
     </template>
-    <v-carousel-item v-for="event in eventList" :key="event._id">
+    <v-carousel-item v-for="event in events" :key="event._id">
       <v-sheet height="100%">
         <v-row class="fill-height" align="center" justify="center">
           <v-img height="100%" :src="event.image">
@@ -21,17 +21,15 @@
 </template>
 
 <script>
+
+import {mapState} from 'vuex'
 export default {
-  
-  props: {
-    eventList:{
-      type:Array,
-      default:()=>{[]}
-    }
-  },
   data() {
     return {
     };
   },
+  computed:{
+    ...mapState(['events'])
+  }
 };
 </script>

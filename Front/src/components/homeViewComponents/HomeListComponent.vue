@@ -1,6 +1,6 @@
 <template>
   <v-row>
-    <v-col sm="12" md="6" lg="4" v-for="event in eventList" :key="event._id">
+    <v-col sm="12" md="6" lg="4" v-for="event in events" :key="event._id">
       <v-card :loading="event.loading" class="mx-auto my-12" max-width="400" min-height="550">
         <template slot="progress">
           <v-progress-linear
@@ -16,7 +16,7 @@
 
         <v-card-text>
 
-          <div class="my-2 text-subtitle-1">$ {{ event.price.$numberDecimal | formatNumber}}</div>
+          <!-- <div class="my-2 text-subtitle-1">$ {{ event.price.$numberDecimal | formatNumber}}</div> -->
 
           <div>
             {{ event.description }}
@@ -33,7 +33,7 @@
             active-class="deep-purple accent-4 white--text"
             column
           >
-            <v-chip v-for="date in event.eventDates" :key="date">{{ date.eventDate.toString() | longDate }}</v-chip>
+            <v-chip v-for="date in event.eventDates" :key="date.id">{{ date.eventDate.toString() | longDate }}</v-chip>
           </v-chip-group>
         </v-card-text>  
 
@@ -48,21 +48,25 @@
 </template>
 
 <script>
+import {mapState, mapActions} from 'vuex'
+
 export default {
-  props: {
-    eventList:{
-      type:Array,
-      default:()=>{[]}
-    }
-  },
   data: () => ({
   }),
+  computed:{
+    ...mapState(['events'])
+  },
   methods: {
     reserve(evento) {
       evento.loading = true;
 
       setTimeout(() => (evento.loading = false), 2000);
     },
+    
+    ...mapActions(['getAllEventsAction'])
+  },
+  mounted () {
+    this.getAllEventsAction()
   },
 };
 </script>

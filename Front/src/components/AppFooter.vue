@@ -16,7 +16,7 @@
         class="py-4 text-center white--text" 
         align-self="center"
         >
-          {{ new Date().getFullYear() }} — <strong>{{brandName}}</strong>
+          {{ new Date().getFullYear() }} — <strong>{{appName}}</strong>
       </v-col>
       <v-col
         cols="12"
@@ -27,7 +27,7 @@
         <v-card color="transparent">
           <v-card-title class="text-center white--text" >Categorias</v-card-title>
           <v-divider color="white"/>
-          <v-chip v-for="cat in categories" :key="cat"
+          <v-chip v-for="cat in eventCategories" :key="cat"
           class="ma-2"
           outlined
           pill
@@ -43,7 +43,7 @@
         align-self="center"
         v-if="$vuetify.breakpoint.smAndDown">
           <v-btn
-            v-for="link in webLinks"
+            v-for="link in navLinks"
             :key="link.name"
             :to="{name:`${link.name}`}"
             plain
@@ -60,21 +60,12 @@
 </template>
 
 <script>
+
+import {mapState} from 'vuex'
+
 export default ({
-  props: {
-    brandName:{
-      type:String,
-      default:''},
-    webLinks:{
-      type:Array,
-      default:() => { [] }
-    },
-    categories:{
-      type:Array,
-      default:() => { [] }
-    }
-  },
-  data: () => ({
-  })
+  computed:{
+    ...mapState(['appName','navLinks','eventCategories'])
+  }
 })
 </script>
