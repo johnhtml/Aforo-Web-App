@@ -35,19 +35,33 @@
 <script>
 export default {
   props: {
-      toogleDrawer:{
-        type: Boolean,
-        default:false
-      },
-    data: () => ({
-      drawer:false,
-      group: null
-    }),
-    watch: {
-      group () {
-        this.drawer = false
-      }
+    toogleDrawer:{
+      type: Boolean,
+      default:false
+    },
+    brandName:{
+      type:String,
+      default:""
+    },
+    webLinks:{
+      type:Array,
+      default:() => { [] }
     }
-  }
+  },
+  data: () => ({
+    drawer:false,
+    group: null
+  }),
+  watch: {
+    group () {
+      this.drawer = false
+    }
+  },
+  methods: {
+    drawerClicked (){
+      this.$emit('showDrawer')
+      this.drawer = !this.drawer
+    }
+  },
 }
 </script>

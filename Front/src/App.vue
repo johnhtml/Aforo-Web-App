@@ -51,7 +51,7 @@ export default {
         name:"Signup",
         text:"Registrase",
         icon:"mdi-account-plus"
-      },
+      }
     ],
     categ:[
       "Cine","Chiquitecas","Conciertos","Carreras", "Fiestas","Misas", "Futbol", 
