@@ -8,6 +8,7 @@ import { getAllEvents } from "./Services/EventsService";
 export default new Vuex.Store({
   state: {
     appName: "Aforo App 2021",
+    userName:"Julito",
     navLinks: [
       {
         name: "Home",
@@ -27,6 +28,16 @@ export default new Vuex.Store({
       {
         name: "Signup",
         text: "Registrase",
+        icon: "mdi-account-plus",
+      },
+      {
+        name: "Event",
+        text: "Detalle evento",
+        icon: "mdi-account-plus",
+      },
+      {
+        name: "User",
+        text: "Usuario",
         icon: "mdi-account-plus",
       },
     ],

@@ -6,37 +6,38 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/",
+    name: "Home",
+    component: Home,
   },
   {
-    path: '/login',
-    name: 'Login',
-    component: () => import('../views/Login.vue')
+    path: "/login",
+    name: "Login",
+    component: () => import("../views/Login.vue"),
   },
   {
-    path: '/signup',
-    name: 'Signup',
-    component: () => import('../views/Signup.vue')
+    path: "/signup",
+    name: "Signup",
+    component: () => import("../views/Signup.vue"),
   },
   {
-    path: '/user',
-    name: 'User',
-    component: () => import('../views/User.vue')
+    path: "/user",
+    name: "User",
+    component: () => import("../views/User.vue"),
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import('../views/About.vue')
+    path: "/about",
+    name: "About",
+    component: () => import("../views/About.vue"),
   },
   {
-    path: '/event/:id',
-    name: 'Event',
+    // path: "/event/:id",
+    path: "/event",
+    name: "Event",
     props: true,
-    component: () => import('../views/Event.vue')
+    component: () => import("../views/Event.vue"),
   }
-]
+];
 
 const router = new VueRouter({
   mode: 'history',
