@@ -5,7 +5,31 @@
     lazy-validation
   >
     <v-text-field
-      v-model="Nombre"
+      v-model="userName"
+      :counter="20"
+      :rules="userNameRules"
+      label="Usuario"
+      placeholder="Ingrese su usuario"
+      required
+    ></v-text-field>
+    <v-text-field
+      v-model="password"
+      :counter="20"
+      :rules="passwordRules"
+      label="Contraseña"
+      placeholder="Ingrese su contraseña"
+      required
+    ></v-text-field>
+    <v-text-field
+      v-model="confirmPassword"
+      :counter="20"
+      :rules="confirmPasswordRules"
+      label="Confirmar contraseña"
+      placeholder="Confirme su contraseña"
+      required
+    ></v-text-field>
+    <v-text-field
+      v-model="name"
       :counter="20"
       :rules="nameRules"
       label="Nombres"
@@ -14,9 +38,9 @@
     ></v-text-field>
 
     <v-text-field
-      v-model="Apellido"
+      v-model="lastName"
       :counter="30"
-      :rules="lastnameRules"
+      :rules="lastNameRules"
       label="Apellidos"
       placeholder="Ingrese sus apellidos completos"
       required
@@ -31,7 +55,7 @@
     ></v-text-field>
 
     <v-text-field
-      v-model="telefono"
+      v-model="phone"
       :rules="phoneRules"
       label="Telefono"
       placeholder="Ingrese su numero Celular"
@@ -40,7 +64,7 @@
     ></v-text-field>
 
     <v-select
-      v-model="select"
+      v-model="docType"
       :items="items"
       :rules="[v => !!v || 'Debe seleccionar su tipo de Documento']"
       label="Tipo de documento"
@@ -48,8 +72,8 @@
     ></v-select>
 
     <v-text-field
-      v-model="numerodocumento"
-      :rules="numdocRules"
+      v-model="numDoc"
+      :rules="numDocRules"
       label="Numero de Documento"
       placeholder="Ingrese el numero de su Documento de Identificacion"
       type number
@@ -57,7 +81,7 @@
     ></v-text-field>
 
     <v-checkbox
-      v-model="checkbox"
+      v-model="personalTerms"
       :rules="[v => !!v || 'Debe aceptar el tratamiento de sus datos personales']"
       label="Acepto el tratamiento de mis datos personales"
       required
@@ -82,19 +106,33 @@
 
   </v-form>
 </template>
-
 <script>
 export default {
     data: () => ({
       valid: true,
+      userName: '',
+      userNameRules: [
+        v => !!v || 'Debe ingresar sus nombres completos',
+        v => (v && v.length <= 20) || 'El nombre debe ser inferior a 20 caracteres',
+      ],
+      password: '',
+      passwordRules: [
+        v => !!v || 'Debe ingresar sus nombres completos',
+        v => (v && v.length <= 20) || 'El nombre debe ser inferior a 20 caracteres',
+      ],
+      confirmPassword: '',
+      confirmPasswordRules: [
+        v => !!v || 'Debe ingresar sus nombres completos',
+        v => (v && v.length <= 20) || 'El nombre debe ser inferior a 20 caracteres',
+      ],
       name: '',
       nameRules: [
         v => !!v || 'Debe ingresar sus nombres completos',
         v => (v && v.length <= 20) || 'El nombre debe ser inferior a 20 caracteres',
       ],
 
-      lastname: '',
-      lastnameRules: [
+      lastName: '',
+      lastNameRules: [
         v => !!v || 'Debe ingresar sus apellidos completos',
         v => (v && v.length <= 30) || 'El apellido debe ser inferior a 30 caracteres',
       ],
@@ -111,7 +149,7 @@ export default {
         v => !!v || 'Debe ingresar su e-mail',
         v => /.+@.+\..+/.test(v) || 'El e-mail ingresado no es válido',
       ],
-      select: null,
+      docType: null,
       items: [
         'C.C.',
         'C.E.',
@@ -119,14 +157,14 @@ export default {
         'Otro',
       ],
 
-      numdoc: '',
-      numdocRules: [
+      numDoc: '',
+      numDocRules: [
         v => !!v || 'Debe ingresar su numero de Identificacion',
         v => !isNaN(v)|| 'Ingrese su numero sin espacios ni puntos',
         v => (v && v.length <= 20) || 'Ingrese su numero de máximo 10 dígitos'
     ],
 
-      checkbox: false,
+      personalTerms: false,
 
       
     }),

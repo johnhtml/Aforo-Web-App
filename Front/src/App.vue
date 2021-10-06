@@ -1,14 +1,8 @@
 <template>
   <v-app>
-    <nav-bar
-      :brandName="appName" 
-      :webLinks="navLinks"/>
-    <!-- <drawerNavBar/> -->
+    <nav-bar/>
     <main-content/>
-    <app-footer 
-      :brandName="appName" 
-      :webLinks="navLinks"
-      :categories="categ"/>
+    <app-footer/>
   </v-app>
 </template>
 

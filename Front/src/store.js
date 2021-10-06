@@ -7,7 +7,7 @@ import { getAllEvents } from "./Services/EventsService";
 
 export default new Vuex.Store({
   state: {
-    appName: "Aforo App",
+    appName: "Aforo App 2021",
     navLinks: [
       {
         name: "Home",
