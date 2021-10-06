@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import store from './store'
 import router from './router'
 import vuetify from './plugins/vuetify'
 
@@ -15,6 +16,7 @@ Moment.locale('es')
 Vue.filter('longDate',(value)=>Moment(value).format('LLLL'))
 
 new Vue({
+  store,
   router,
   vuetify,
   render: h => h(App)
