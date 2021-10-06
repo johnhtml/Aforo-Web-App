@@ -65,7 +65,7 @@
 
     <v-select
       v-model="docType"
-      :items="items"
+      :items="userDocumentTypes"
       :rules="[v => !!v || 'Debe seleccionar su tipo de Documento']"
       label="Tipo de documento"
       required
@@ -108,6 +108,8 @@
 </template>
 <script>
 
+
+import {mapState} from 'vuex'
 import { insertNewUser } from '../Services/SignupService'
 
 export default {
@@ -153,12 +155,6 @@ export default {
         v => /.+@.+\..+/.test(v) || 'El e-mail ingresado no es válido',
       ],
       docType: null,
-      items: [
-        'C.C.',
-        'C.E.',
-        'T.I.',
-        'Otro',
-      ],
 
       numDoc: '',
       numDocRules: [
@@ -171,6 +167,10 @@ export default {
 
       
     }),
+
+    computed: {
+      ...mapState(['userDocumentTypes'])    
+    },
 
     methods: {
       validate () {

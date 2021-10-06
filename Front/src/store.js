@@ -40,19 +40,20 @@ export default new Vuex.Store({
       "Misas",
       "Futbol",
     ],
+    userDocumentTypes: ["CC", "CE", "TI", "Pasaporte"],
   },
   mutations: {
-    fillEvents (state, events) {
-      state.events = events
+    fillEvents(state, events) {
+      state.events = events;
     },
   },
   actions: {
     async getAllEventsAction({ commit }) {
       try {
-        const res = await getAllEvents()
-        commit("fillEvents", res.data)
+        const res = await getAllEvents();
+        commit("fillEvents", res.data);
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
     },
   },
