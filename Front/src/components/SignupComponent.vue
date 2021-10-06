@@ -91,7 +91,7 @@
       :disabled="!valid"
       color="primary"
       class="mr-4"
-      @click="validate"
+      @click="createNewUser"
     >
       Enviar
     </v-btn>
@@ -107,6 +107,9 @@
   </v-form>
 </template>
 <script>
+
+import { insertNewUser } from '../Services/SignupService'
+
 export default {
     data: () => ({
       valid: true,
@@ -179,6 +182,25 @@ export default {
       resetValidation () {
         this.$refs.form.resetValidation()
       },
+      createNewUser(){
+        const newUser = {
+          userName: this.userName,
+          password: this.password,
+          name: this.name,
+          lastName: this.lastName,
+          phone: this.phone,
+          email: this.email,
+          documentType: this.docType,
+          documentNumber: this.numDoc,
+          acceptedPersonalTerms: this.personalTerms
+        }
+        insertNewUser(newUser)
+        .then((res)=>{
+          console.log(`Usuario ${res.data.userName} se ha creado con exito`)
+        })
+        .catch((err)=>console.error(err));
+
+      }
     },
   }
 </script>

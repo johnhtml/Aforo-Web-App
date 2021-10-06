@@ -1,11 +1,15 @@
-const mongoose = require('mongoose')
-const User = require('../models/user')
+const userModel = require("../models/user");
 
-module.exports = (router) => {
+module.exports = class signupController {
 
-  //POST: crear nuevo usuario en la base de datos
-  router.post('/user', (req, res) => {
-    
-  })
+  static async insertNewUser(req, res) {
+    try {
+      const user = req.body
+      const newUser = await userModel.create(user)
+      res.status(201).json(newUser)
+    } catch (error) {
+      res.status(400).json({ message: error.message })
+    }
+  }
 
-}
+};

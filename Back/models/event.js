@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const eventSchema = new mongoose.Schema({
-  _id: { type: mongoose.Schema.Types.ObjectId },
+  // _id: { type: mongoose.Schema.Types.ObjectId },
   name: { type: String },
   description: { type: String },
   price: { type: mongoose.Schema.Types.Decimal128 },
