@@ -6,7 +6,7 @@
         <v-col v-for="event in events" :key="event.id" cols="12">
           <v-card :img="event.image">
             <v-list two-line>
-              <v-list-item :to="{ name: 'Event', params: { id: event.id } }">
+              <v-list-item :to="{ name: 'EventById', params: { id: event._id } }">
                 <!-- <v-list-item-avatar  color="grey darken-1"> </v-list-item-avatar> -->
                 
                 <v-avatar class="mr-4">
@@ -49,8 +49,16 @@ export default {
   computed:{
     ...mapState(['userName','events'])
   },
+  methods:{
+    // ...mapActions(['getAllEventsAction']),
+    // validarEventos: () => {
+    //   if (!this.events.length){
+    //     'getAllEventsAction'
+    //   }
+    // }
+  },
   mounted() {
-    // localStorage.setItem("user", JSON.stringify(this.user));
+    // this.validarEventos()
   },
 };
 </script>

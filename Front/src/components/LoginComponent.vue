@@ -19,7 +19,8 @@
 
     <v-spacer></v-spacer>
     <div>
-      <v-btn id="boton" color="primary" v-on:click="loginFunction()">Login</v-btn>
+      <v-btn id="boton" color="primary" @click="loginFunction()">Login</v-btn>
+      <v-btn id="boton" color="gray" :to="{name:'Signup'}">Registrarse</v-btn>
     </div>
   </v-form>
 </template>

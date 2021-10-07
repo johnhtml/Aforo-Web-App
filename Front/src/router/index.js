@@ -31,12 +31,18 @@ const routes = [
     component: () => import("../views/About.vue"),
   },
   {
-    // path: "/event/:id",
     path: "/event",
     name: "Event",
     props: true,
     component: () => import("../views/Event.vue"),
-  }
+  },
+  {
+    path: "/event/:id",
+    // path: "/event",
+    name: "EventById",
+    props: true,
+    component: () => import("../views/Event.vue"),
+  },
 ];
 
 const router = new VueRouter({

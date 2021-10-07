@@ -7,8 +7,8 @@ import { getAllEvents } from "./Services/EventsService";
 
 export default new Vuex.Store({
   state: {
-    appName: "Aforo App 2021",
-    userName:"Julito",
+    appName: "Aforo App",
+    userName: "Julito el marranito",
     navLinks: [
       {
         name: "Home",
@@ -26,19 +26,9 @@ export default new Vuex.Store({
         icon: "mdi-account",
       },
       {
-        name: "Signup",
-        text: "Registrase",
-        icon: "mdi-account-plus",
-      },
-      {
-        name: "Event",
-        text: "Detalle evento",
-        icon: "mdi-account-plus",
-      },
-      {
         name: "User",
-        text: "Usuario",
-        icon: "mdi-account-plus",
+        text: "Perfil",
+        icon: "mdi-account",
       },
     ],
     events: [],
@@ -67,5 +57,14 @@ export default new Vuex.Store({
         console.error(error);
       }
     },
+  },
+  getters: {
+    getEventById: (state) => (id) => {
+      return Object.values(state.events).filter((event) => event._id === id);
+    },
+
+    // getEventById: (state) => (id) => {
+    //   return state.events.find((event) => event._id === id);
+    // },
   },
 });

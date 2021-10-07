@@ -1,6 +1,5 @@
 <template>
     <div class="login">
-        <h3>This is the login page</h3>
         <loginComponent></loginComponent>
     </div>
 </template>

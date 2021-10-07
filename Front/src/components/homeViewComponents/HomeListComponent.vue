@@ -1,6 +1,6 @@
 <template>
   <v-row>
-    <v-col sm="12" md="6" lg="4" v-for="event in events" :key="event._id">
+    <v-col sm="12" md="6" lg="4" v-for="event in events" :key="event._id" >
       <v-card :loading="event.loading" class="mx-auto my-12" max-width="400" min-height="550">
         <template slot="progress">
           <v-progress-linear
