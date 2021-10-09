@@ -58,7 +58,7 @@ export default {
     // }
   },
   mounted() {
-    // this.validarEventos()
+    this.validarEventos()
   },
 };
 </script>

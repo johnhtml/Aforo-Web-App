@@ -6,16 +6,16 @@
 
     <v-card class="mx-auto" max-width="1200">
       <v-img
-        :src="event[0].image"
+        :src="event.image"
         height="200px"
       ></v-img>
 
-      <v-card-title>{{event[0].name}}</v-card-title>
+      <v-card-title>{{event.name}}</v-card-title>
 
       <!-- <v-card-subtitle> 24 Diciembre 2020 </v-card-subtitle> -->
 
       <v-card-actions>
-        <v-btn @click="show = !show" color="orange lighten-2" text>{{event[0].description}}</v-btn>
+        <v-btn @click="show = !show" color="orange lighten-2" text>{{event.description}}</v-btn>
 
         <v-spacer></v-spacer>
 
@@ -31,11 +31,11 @@
           
         <v-card-text>
           <v-chip-group
-            v-model="event[0].selection"
+            v-model="event.selection"
             active-class="deep-purple accent-4 white--text"
             column
           >
-            <v-chip v-for="date in event[0].eventDates" :key="date.id">{{ date.eventDate.toString() | longDate }}</v-chip>
+            <v-chip v-for="date in event.eventDates" :key="date.id">{{ date.eventDate.toString() | longDate }}</v-chip>
           </v-chip-group>
         </v-card-text>  
         </div>
@@ -62,10 +62,10 @@ export default {
     show: false,
     user: JSON.parse(localStorage.getItem("user")),
     mdiGreasePencil: mdiGreasePencil,
-    event:[]
+    //event:[]
   }),
   computed:{
-    ...mapState(['userName']),
+    events: mapState('userName'),
     ...mapGetters(['getEventById'])
   },
   mounted () {

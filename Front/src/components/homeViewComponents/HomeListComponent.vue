@@ -38,8 +38,8 @@
         </v-card-text>  
 
         <v-card-actions>
-          <v-btn color="deep-purple lighten-2" text @click="reserve(evento)">
-            Reservar
+          <v-btn color="deep-purple lighten-2" text @click="reserve(evento) " :to="{ name: 'EventById', params: { id: event._id } }">
+            Ver
           </v-btn>
         </v-card-actions>
       </v-card>
