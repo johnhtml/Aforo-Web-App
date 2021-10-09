@@ -7,7 +7,7 @@ import { getAllEvents } from "./Services/EventsService";
 
 export default new Vuex.Store({
   state: {
-    appName: "Aforo App 5000",
+    appName: "Aforo App",
     userName: "Julito el marranito",
     navLinks: [
       {
@@ -29,12 +29,7 @@ export default new Vuex.Store({
         name: "User",
         text: "Perfil",
         icon: "mdi-account",
-      },
-      {
-        name: "User",
-        text: "Ricardo",
-        icon: "mdi-account",
-      },
+      }
     ],
     events: [],
     eventCategories: [
@@ -54,15 +49,15 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async getAllEventsAction({ commit, getters }) {
-      if (getters.eventsCount == 0) {
+    async getAllEventsAction({ commit }) {
+      // if (getters.eventsCount == 0) {
         try {
           const res = await getAllEvents();
           commit("fillEvents", res.data);
         } catch (error) {
           console.error(error);
         }
-      }
+      // }
     },
   },
   getters: {
