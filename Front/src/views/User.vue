@@ -47,7 +47,8 @@ export default {
     },
   }),
   computed:{
-    ...mapState(['userName','events'])
+    ...mapState('user' ['userName']),
+    ...mapState('event',['events'])
   },
   methods:{
     // ...mapActions(['getAllEventsAction']),

@@ -54,7 +54,7 @@ export default {
   data: () => ({
   }),
   computed:{
-    ...mapState(['events'])
+    ...mapState('event', ['events'])
   },
   methods: {
     reserve(evento) {
@@ -63,7 +63,7 @@ export default {
       setTimeout(() => (evento.loading = false), 2000);
     },
     
-    ...mapActions(['getAllEventsAction'])
+    ...mapActions('event', ['getAllEventsAction'])
   },
   mounted () {
     this.getAllEventsAction()

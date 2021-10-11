@@ -34,7 +34,7 @@ export default ({
     // drawer: false
   }),
   computed:{
-    ...mapState(['appName','navLinks'])
+    ...mapState('globals', ['appName','navLinks'])
   },
   methods: {
     // showDrawer(){

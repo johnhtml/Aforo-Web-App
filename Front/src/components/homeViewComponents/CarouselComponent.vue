@@ -29,7 +29,7 @@ export default {
     };
   },
   computed:{
-    ...mapState(['events'])
+    ...mapState('event', ['events'])
   }
 };
 </script>

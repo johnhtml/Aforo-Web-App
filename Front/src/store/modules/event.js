@@ -1,9 +1,9 @@
 import { getAllEvents } from "@/Services/EventsService"
 
 export default {
-  namespaced = true,
-  
-  state = {
+  namespaced: true,
+
+  state: {
     events: [],
     eventCategories: [
       "Cine",
@@ -24,7 +24,6 @@ export default {
 
   actions: {
     async getAllEventsAction({ commit }) {
-      // if (getters.eventsCount == 0) {
       try {
         const res = await getAllEvents();
         commit("fillEvents", res.data);

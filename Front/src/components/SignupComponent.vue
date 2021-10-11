@@ -169,7 +169,7 @@ export default {
     }),
 
     computed: {
-      ...mapState(['userDocumentTypes'])    
+      ...mapState('signup', ['userDocumentTypes'])
     },
 
     methods: {

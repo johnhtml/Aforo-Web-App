@@ -65,7 +65,8 @@ import {mapState} from 'vuex'
 
 export default ({
   computed:{
-    ...mapState(['appName','navLinks','eventCategories'])
+    ...mapState('globals', ['appName','navLinks']),
+    ...mapState('event', ['eventCategories'])
   }
 })
 </script>

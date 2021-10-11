@@ -65,8 +65,8 @@ export default {
     //event:[]
   }),
   computed:{
-    events: mapState('userName'),
-    ...mapGetters(['getEventById'])
+    events: mapState('user',['userName']),
+    ...mapGetters('event', ['getEventById'])
   },
   mounted () {
     this.event = this.getEventById(this.$route.params.id) 
