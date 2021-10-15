@@ -2,15 +2,25 @@
   <v-app>
     <nav-bar/>
     <main-content/>
+    
+    <snack-bar v-if="snackBar"
+      :snackbar="snackBar"
+      :text="message"
+      :timeout="2000"
+    />
     <app-footer/>
   </v-app>
 </template>
+
 
 <script>
 import NavBar from './components/appBarComponents/NavBar.vue'
 // import DrawerNavBar from './components/appBarComponents/drawerNavBar.vue'
 import MainContent from './components/MainContent.vue'
 import AppFooter from './components/AppFooter.vue'
+import SnackBar from './components/globalComponents/SnackBar.vue'
+
+import { mapState } from 'vuex'
 
 export default {
   name: 'App',
@@ -19,44 +29,16 @@ export default {
     NavBar,
     // DrawerNavBar,
     MainContent,
-    AppFooter
+    AppFooter,
+    SnackBar
 
   },
 
   data: () => ({
-    appName: "Aforo App",
-    navLinks: [
-      {
-        name: "Home",
-        text: "Home",
-        icon: "mdi-home",
-      },
-      {
-        name: "About",
-        text: "Nosotros",
-        icon: "mdi-clipboard-account-outline",
-      },
-      {
-        name: "Login",
-        text: "Log in",
-        icon: "mdi-account",
-      },
-      {
-        name: "Signup",
-        text: "Registrase",
-        icon: "mdi-account-plus",
-      },
-    ],
-    events: [],
-    categ: [
-      "Cine",
-      "Chiquitecas",
-      "Conciertos",
-      "Carreras",
-      "Fiestas",
-      "Misas",
-      "Futbol",
-    ]
-  })
+    showSnackBar: false
+  }),
+  computed: {
+    ...mapState('snackBar',['snackBar', 'message'])
+  }
 };
 </script>

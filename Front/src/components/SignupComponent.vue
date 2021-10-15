@@ -132,32 +132,23 @@
     <v-btn
       color="success"
       class="mr-4"
-      @click="reset"
+      @click="resetForm()"
     >
-      Limpiar
+      Cancelar
     </v-btn>
     
-    <snack-bar v-if="showSnackBar"
-      :snackbar="showSnackBar"
-      :text="snackBarMessage"
-      :color="colorSnackBar"
-      :timeout="snackBarTimeout"
-    />
   </v-form>
 </template>
 <script>
 
 
-import {mapState} from 'vuex'
+import {mapState, mapActions} from 'vuex'
 import { insertNewUser } from '../Services/SignupService'
-import SnackBar from '../components/globalComponents/SnackBar.vue'
+
+var bcrypt = require('../../node_modules/bcryptjs/index');
+var salt = bcrypt.genSaltSync(10);
 
 export default {
-    components: {
-        SnackBar,
-
-
-    },
     data: () => ({
       valid: false,
       userName: '',
@@ -172,10 +163,6 @@ export default {
       numDoc: '',
       personalTerms: false,
 
-      showSnackBar: false,
-      snackBarMessage: "",
-      colorSnackBar: "",
-      snackBarTimeout: 2000,      
     }),
 
     computed: {
@@ -187,11 +174,12 @@ export default {
       resetForm () {
         this.$refs.form.reset()
         this.$refs.form.resetValidation()
+        this.$router.push('/login')
       },
       createNewUser(){
         const newUser = {
           userName: this.userName,
-          password: this.password,
+          password: bcrypt.hashSync(this.password, salt),
           name: this.name,
           lastName: this.lastName,
           phone: this.phone,
@@ -203,23 +191,20 @@ export default {
         insertNewUser(newUser)
         .then((res)=>{
           if (res.data.message == null || res.data.message == undefined){
-            this.showUserMessage(`Usuario ${res.data.userName} se ha creado con exito`, "success")
+            this.showSnackBar(`El usuario '${res.data.userName}' se ha creado con exito`)
+            console.log(`El usuario '${res.data.userName}' se ha creado con exito`)
             this.resetForm()
             this.$router.push('/login')
            }
            else{
-            this.showUserMessage(`${res.data.message}`, "error")
+            this.showSnackBar(`${res.data.message}`)
+            
+            console.log(`${res.data.message}`)
            }
         })
         .catch((err)=>console.error(err));
       },
-      showUserMessage(message, color, timeout = 2000) {
-        this.snackBarMessage = message
-        this.colorSnackBar = color
-        this.showSnackBar = true
-        this.timeout = timeout
-        setTimeout( () => this.showSnackBar = false, timeout)
-      }
+      ...mapActions('snackBar', ['showSnackBar'])
     },
   }
 </script>
