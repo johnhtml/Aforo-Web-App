@@ -15,7 +15,7 @@
             <div v-for="(link, index) in navLinks" 
               :key="link.name">
               <v-btn v-if="link.show"
-                  :to="{name:`${link.name}`}"
+                  :to="{ name:`${routeAuthorization(index) ? link.name : 'Home'}`}"
                   @click="changeLoginMenuButtons(index)"
                   plain>
                 <v-icon class="pb-1 pr-1">{{link.icon}}</v-icon>
@@ -37,10 +37,10 @@ export default ({
     // drawer: false
   }),
   computed:{
-    ...mapState('globals', ['appName','navLinks'])
+    ...mapState('globals', ['appName','user', 'navLinks'])
   },
   methods: {
-    ...mapActions('globals',['changeLoginMenuButtons'])
+    ...mapActions('globals',['changeLoginMenuButtons','routeAuthorization'])
   }
 
 })

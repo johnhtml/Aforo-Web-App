@@ -1,20 +1,12 @@
 <template>
 <v-card  class="mx-auto mt-5">
-  <v-img
-      src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-      height="400px"
-    ></v-img>
-  <v-card-title class="text-h4 font-weight-bold" v-bind="name">{{name ? name : "Formulario para crear nuevo evento."}}
-  </v-card-title>
-
-  <v-card-subtitle v-bind="description">{{description ? description : ""}}
-  </v-card-subtitle>
   <v-form 
     v-model="valid"
     ref="form"
      class="pa-5">
-   
-    <!-- nombre del evento -->
+    <v-icon class="mr-2 pb-2 d-inline-flex" large v-if="$vuetify.breakpoint.mdAndUp">mdi-account-group</v-icon>
+    <h2 class="d-inline-flex">{{appName}} - Inicio de sesión.</h2>
+  <!-- nombre del evento -->
     <v-text-field v-model="name"
       type="text"
       required
@@ -27,10 +19,11 @@
       ]"
     ></v-text-field>
     
-    <!-- descripción del evento -->
+  <!-- descripción del evento -->
     <v-text-field v-model="description"
       type="text"
       :counter="100"
+      :append-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'"
       label="Descripción"
       placeholder="Ingrese una breve descripción del evento"
       :rules="[
@@ -45,25 +38,13 @@
       placeholder="Ingrese el precio del evento"
     ></v-text-field>
 
-  
-    <!-- Fechas del evento  -->
-    <template>
-    <v-card class="mx-auto">
-    <v-list-item two-line>
-      <v-list-item-content>
-        <v-list-item-title class="text-h5">
-          Fechas del evento
-        </v-list-item-title>
-        <v-list-item-subtitle>Selecciona las fechas del evento</v-list-item-subtitle>
-      </v-list-item-content>
-    </v-list-item>
-    <v-row class="px-5">
+      <template>
+    <v-row>
       <v-col
         cols="12"
         sm="6"
       >
         <v-date-picker
-        class="d-flex"
           v-model="dates"
           multiple
         ></v-date-picker>
@@ -87,7 +68,7 @@
               multiple
               chips
               small-chips
-              label="Fechas seleccionadas"
+              label="Multiple picker in menu"
               prepend-icon="mdi-calendar"
               readonly
               v-bind="attrs"
@@ -119,39 +100,11 @@
         </v-menu>
       </v-col>
     </v-row>
-    </v-card>
   </template>
-
-  <v-card class="mt-5">
-  <v-combobox
-    class="px-3 pt-5"
-    v-model="chips"
-    :items="items"
-    chips
-    clearable
-    label="Your favorite hobbies"
-    multiple
-    prepend-icon="mdi-filter-variant"
-    solo
-  >
-    <template v-slot:selection="{ attrs, item, selected }">
-      <v-chip
-        v-bind="attrs"
-        :input-value="selected"
-        close
-        @click:close="remove(item)" 
-        color="green"
-        outlined
-      >
-        {{ item }}&nbsp;
-      </v-chip>
-    </template>
-  </v-combobox>
-  </v-card>
     <v-divider class="my-4"></v-divider>
     <div class="mt-5 d-flex">
-      <v-btn class="mr-4"  color="success" :to="{name:'Signup'}">Limpiar</v-btn>
-      <v-btn :disabled="!valid" color="info" @click="loginFunction()">Guardar</v-btn>
+      <v-btn class="mr-4"  color="success" :to="{name:'Signup'}">Registrarse</v-btn>
+      <v-btn :disabled="!valid" color="info" @click="loginFunction()">Login</v-btn>
     </div>
   </v-form>
 </v-card>
@@ -160,17 +113,8 @@
 <script>
   export default {
     data: () => ({
-      name:'',
-      description:'',
-      dates: [],
+      dates: ['2018-09-15', '2018-09-20'],
       menu: false,
-      chips: ['Programming', 'Playing video games', 'Watching movies', 'Sleeping'],
-      items: ['Streaming', 'Eating'],
-    }),methods: {
-      remove (item) {
-        this.chips.splice(this.chips.indexOf(item), 1)
-        this.chips = [...this.chips]
-      },
-    }
+    }),
   }
 </script>
