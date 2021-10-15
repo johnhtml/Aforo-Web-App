@@ -1,9 +1,9 @@
 <template>
 <v-card  class="mx-auto mt-5">
-  <v-img
-      src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+  <v-img v-if="image"
+      :src="image"
       height="400px"
-    ></v-img>
+  ></v-img>
   <v-card-title class="text-h4 font-weight-bold" v-bind="name">{{name ? name : "Formulario para crear nuevo evento."}}
   </v-card-title>
 
@@ -33,6 +33,20 @@
       :counter="100"
       label="Descripción"
       placeholder="Ingrese una breve descripción del evento"
+      :rules="[
+        v => (v && v.length <= 100) || 'La descripción del evento debe tener máximo 100 caracteres.',
+      ]"
+    ></v-text-field>
+
+    
+    <!-- imagen del evento -->
+    <v-text-field v-model="image"
+      required
+      type="url"
+      label="Imagen del evento"
+      prepend-icon="mdi-image-plus"
+      @click:prepend="showPassword = !showPassword"
+      placeholder="Seleccione una imagen para el evento o ingrese la url de la imagen."
       :rules="[
         v => (v && v.length <= 100) || 'La descripción del evento debe tener máximo 100 caracteres.',
       ]"
@@ -166,6 +180,7 @@
       menu: false,
       chips: ['Programming', 'Playing video games', 'Watching movies', 'Sleeping'],
       items: ['Streaming', 'Eating'],
+      image:""
     }),methods: {
       remove (item) {
         this.chips.splice(this.chips.indexOf(item), 1)
