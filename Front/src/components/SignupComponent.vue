@@ -2,89 +2,122 @@
   <v-form
     ref="form"
     v-model="valid"
-    lazy-validation
   >
-    <v-text-field
-      v-model="userName"
+
+  <!-- Usuario -->
+    <v-text-field v-model="userName"
+      required
       :counter="20"
-      :rules="userNameRules"
       label="Usuario"
       placeholder="Ingrese su usuario"
-      required
+      :rules="[
+        v => !! v || '*Requerido: Ingrese su nombre de usuario.',
+        v => (v && v.length >= 5 && v.length <= 20) || 'Su nombre de usuario debe tener entre 5 y 20 caracteres.',
+      ]"
     ></v-text-field>
-    <v-text-field
-      v-model="password"
-      :counter="20"
-      :rules="passwordRules"
+
+  <!-- Contraseña -->
+    <v-text-field v-model="password"
+      required
+      type="password"
+      :counter="0"
       label="Contraseña"
       placeholder="Ingrese su contraseña"
-      required
+      :rules="[
+        v => !!v || '*Requerido: Ingrese su contraseña.',
+        v => (v && v.length >= 8) || 'Su contraseña debe tener mínimo 8 caracteres.',
+      ]"
     ></v-text-field>
-    <v-text-field
-      v-model="confirmPassword"
-      :counter="20"
-      :rules="confirmPasswordRules"
+
+  <!-- Confirmar contraseña -->
+    <v-text-field v-model="confirmPassword"
+      required
+      type="password"
+      :counter="0 "
       label="Confirmar contraseña"
       placeholder="Confirme su contraseña"
-      required
+      :rules="[
+        v => !!v || '*Requerido: Ingrese nuevamente su contraseña.',
+        v => (v === this.password) || 'Las contraseñas ingresadas no son iguales, verifiquelas.',
+      ]"
     ></v-text-field>
-    <v-text-field
-      v-model="name"
-      :counter="20"
-      :rules="nameRules"
+
+  <!-- Nombres -->
+    <v-text-field v-model="name"
+      required
+      type="text"
+      :counter="30"
       label="Nombres"
       placeholder="Ingrese sus nombres completos"
-      required
+      :rules="[
+        v => !!v || '*Requerido: Ingrese sus nombres completos.',
+        v => (v && v.length <= 30) || 'No puede exceder 30 caracteres.',
+      ]"
     ></v-text-field>
 
-    <v-text-field
-      v-model="lastName"
+  <!-- Apellidos -->
+    <v-text-field v-model="lastName"
+      required
       :counter="30"
-      :rules="lastNameRules"
       label="Apellidos"
       placeholder="Ingrese sus apellidos completos"
-      required
+      :rules="[
+        v => !!v || '*Requerido: Ingrese sus apellidos completos.',
+        v => (v && v.length <= 30) || 'No puede exceder 30 caracteres.',
+      ]"
     ></v-text-field>
 
-    <v-text-field
-      v-model="email"
-      :rules="emailRules"
+  <!-- email -->
+    <v-text-field v-model="email"
+      required
+      :counter="0"
       label="E-mail"
       placeholder="Ingrese su e-mail"
-      required
+      :rules="[ 
+        v => !!v || '*Requerido: Ingrese su correo electrónico.',
+        v => (v && v.length <= 100) || 'No puede exceder 100 caracteres.',
+        v => (v && this.emailFormat.test(v)) || 'Ingrese un correo valido.'
+      ]"
     ></v-text-field>
 
-    <v-text-field
-      v-model="phone"
-      :rules="phoneRules"
-      label="Telefono"
-      placeholder="Ingrese su numero Celular"
-      type number
+  <!-- Teléfono -->
+    <v-text-field v-model="phone"
       required
+      type="text"
+      :counter="10"
+      label="Número de contacto"
+      placeholder="Ingrese su número de contacto"
+      :rules="[
+        v => !!v || '*Requerido: Ingrese su número de contacto.',
+        v => !isNaN(v)|| 'Solo puede ingresar numeros.',
+        v => (v && v.length == 10) || 'El número de contacto debe ser de 10 dígitos.'
+    ]"
     ></v-text-field>
 
-    <v-select
-      v-model="docType"
+  <!-- Tipo de documento -->
+    <v-select v-model="docType"
+      required
       :items="userDocumentTypes"
-      :rules="[v => !!v || 'Debe seleccionar su tipo de Documento']"
       label="Tipo de documento"
-      required
+      :rules="[v => !!v || '*Requerido: Debe seleccionar el tipo de su documento de identificación.']"
     ></v-select>
 
-    <v-text-field
-      v-model="numDoc"
-      :rules="numDocRules"
-      label="Numero de Documento"
-      placeholder="Ingrese el numero de su Documento de Identificacion"
-      type number
+  <!-- Número de documento -->
+    <v-text-field v-model="numDoc"
       required
+      label="Documento de identificación"
+      placeholder="Ingrese su documento de identificación"
+      :rules="[
+        v => !!v || '*Requerido: Ingrese su documento de identificación.',
+        v => (v && v.length <= 20) || 'No puede exceder 20 caracteres.'
+    ]"
     ></v-text-field>
 
-    <v-checkbox
-      v-model="personalTerms"
-      :rules="[v => !!v || 'Debe aceptar el tratamiento de sus datos personales']"
-      label="Acepto el tratamiento de mis datos personales"
+    <v-checkbox v-model="personalTerms"
       required
+      type="checkbox"
+      label="Acepto el tratamiento de mis datos personales."
+      :rules="[v => !!v || '*Requerido: Debe aceptar el tratamiento de datos personales para continuar con el registro.']"
     ></v-checkbox>
 
     <v-btn
@@ -103,7 +136,13 @@
     >
       Limpiar
     </v-btn>
-
+    
+    <snack-bar v-if="showSnackBar"
+      :snackbar="showSnackBar"
+      :text="snackBarMessage"
+      :color="colorSnackBar"
+      :timeout="snackBarTimeout"
+    />
   </v-form>
 </template>
 <script>
@@ -111,75 +150,42 @@
 
 import {mapState} from 'vuex'
 import { insertNewUser } from '../Services/SignupService'
+import SnackBar from '../components/globalComponents/SnackBar.vue'
 
 export default {
+    components: {
+        SnackBar,
+
+
+    },
     data: () => ({
-      valid: true,
+      valid: false,
       userName: '',
-      userNameRules: [
-        v => !!v || 'Debe ingresar sus nombres completos',
-        v => (v && v.length <= 20) || 'El nombre debe ser inferior a 20 caracteres',
-      ],
       password: '',
-      passwordRules: [
-        v => !!v || 'Debe ingresar sus nombres completos',
-        v => (v && v.length <= 20) || 'El nombre debe ser inferior a 20 caracteres',
-      ],
       confirmPassword: '',
-      confirmPasswordRules: [
-        v => !!v || 'Debe ingresar sus nombres completos',
-        v => (v && v.length <= 20) || 'El nombre debe ser inferior a 20 caracteres',
-      ],
       name: '',
-      nameRules: [
-        v => !!v || 'Debe ingresar sus nombres completos',
-        v => (v && v.length <= 20) || 'El nombre debe ser inferior a 20 caracteres',
-      ],
-
       lastName: '',
-      lastNameRules: [
-        v => !!v || 'Debe ingresar sus apellidos completos',
-        v => (v && v.length <= 30) || 'El apellido debe ser inferior a 30 caracteres',
-      ],
-
       phone: '',
-      phoneRules: [
-        v => !!v || 'Debe ingresar su numero de Celular',
-        v => !isNaN(v)|| 'Solo puede ingresar numeros',
-        v => (v && v.length <= 10) || 'Ingrese su numero de máximo 10 dígitos'
-    ],
-      
       email: '',
-      emailRules: [
-        v => !!v || 'Debe ingresar su e-mail',
-        v => /.+@.+\..+/.test(v) || 'El e-mail ingresado no es válido',
-      ],
+      emailFormat: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
       docType: null,
-
       numDoc: '',
-      numDocRules: [
-        v => !!v || 'Debe ingresar su numero de Identificacion',
-        v => !isNaN(v)|| 'Ingrese su numero sin espacios ni puntos',
-        v => (v && v.length <= 20) || 'Ingrese su numero de máximo 10 dígitos'
-    ],
-
       personalTerms: false,
 
-      
+      showSnackBar: false,
+      snackBarMessage: "",
+      colorSnackBar: "",
+      snackBarTimeout: 2000,      
     }),
 
     computed: {
-      ...mapState('signup', ['userDocumentTypes'])
+      ...mapState('signup', ['userDocumentTypes']),
+      ...mapState('validations', ['emailValidation'])
     },
 
     methods: {
-      validate () {
-        this.$refs.form.validate()
-      },
-      reset () {
+      resetForm () {
         this.$refs.form.reset()
-      },
-      resetValidation () {
         this.$refs.form.resetValidation()
       },
       createNewUser(){
@@ -196,10 +202,23 @@ export default {
         }
         insertNewUser(newUser)
         .then((res)=>{
-          console.log(`Usuario ${res.data.userName} se ha creado con exito`)
+          if (res.data.message == null || res.data.message == undefined){
+            this.showUserMessage(`Usuario ${res.data.userName} se ha creado con exito`, "success")
+            this.resetForm()
+            this.$router.push('/login')
+           }
+           else{
+            this.showUserMessage(`${res.data.message}`, "error")
+           }
         })
         .catch((err)=>console.error(err));
-
+      },
+      showUserMessage(message, color, timeout = 2000) {
+        this.snackBarMessage = message
+        this.colorSnackBar = color
+        this.showSnackBar = true
+        this.timeout = timeout
+        setTimeout( () => this.showSnackBar = false, timeout)
       }
     },
   }

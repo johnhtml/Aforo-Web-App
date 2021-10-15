@@ -4,6 +4,8 @@ import user from './modules/user'
 import globals from "./modules/globals";
 import signup from "./modules/signup";
 import event from "./modules/event";
+import snackBar from "./modules/snackBar";
+import validations from "./modules/validations";
 
 Vue.use(Vuex)
 
@@ -14,6 +16,8 @@ export default new Vuex.Store({
     user,
     globals,
     signup,
-    event
+    event,
+    snackBar,
+    validations
   }
 });
