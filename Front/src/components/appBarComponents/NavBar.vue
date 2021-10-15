@@ -12,14 +12,17 @@
           <v-toolbar-title>{{appName}}</v-toolbar-title>
           <v-spacer></v-spacer>
           <template v-if="$vuetify.breakpoint.mdAndUp">
-            <v-btn 
-              v-for="link in navLinks" 
-              :key="link.name"
-              :to="{name:`${link.name}`}"
-              plain>
-              <v-icon class="pb-1 pr-1">{{link.icon}}</v-icon>
-                {{link.text}}
-            </v-btn>
+            <div v-for="(link, index) in navLinks" 
+              :key="link.name">
+              <v-btn v-if="link.show"
+                  :to="{name:`${link.name}`}"
+                  @click="changeLoginMenuButtons(index)"
+                  plain>
+                <v-icon class="pb-1 pr-1">{{link.icon}}</v-icon>
+                  {{link.text}}
+              </v-btn>
+            
+            </div>
           </template>
       </v-app-bar>
     </v-card>
@@ -27,7 +30,7 @@
 
 <script>
 
-import {mapState} from 'vuex'
+import {mapState, mapActions} from 'vuex'
 
 export default ({
   data: () => ({
@@ -37,9 +40,7 @@ export default ({
     ...mapState('globals', ['appName','navLinks'])
   },
   methods: {
-    // showDrawer(){
-    //   // this.showDrawer = !this.showDrawer
-    // }
+    ...mapActions('globals',['changeLoginMenuButtons'])
   }
 
 })

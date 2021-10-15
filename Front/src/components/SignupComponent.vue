@@ -1,9 +1,12 @@
 <template>
+<v-card  class="mx-auto mt-5">
   <v-form
     ref="form"
     v-model="valid"
+    class="pa-5"
   >
-
+  
+  <h1 > Formulario de registro.</h1>
   <!-- Usuario -->
     <v-text-field v-model="userName"
       required
@@ -19,8 +22,10 @@
   <!-- Contraseña -->
     <v-text-field v-model="password"
       required
-      type="password"
+      :type="showPassword ? 'text' : 'password'"
       :counter="0"
+      :append-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'"
+      @click:append="showPassword = !showPassword"
       label="Contraseña"
       placeholder="Ingrese su contraseña"
       :rules="[
@@ -32,7 +37,9 @@
   <!-- Confirmar contraseña -->
     <v-text-field v-model="confirmPassword"
       required
-      type="password"
+      :type="showPassword2 ? 'text' : 'password'"
+      :append-icon="showPassword2 ? 'mdi-eye-off' : 'mdi-eye'"
+      @click:append="showPassword2 = !showPassword2"
       :counter="0 "
       label="Confirmar contraseña"
       placeholder="Confirme su contraseña"
@@ -138,6 +145,7 @@
     </v-btn>
     
   </v-form>
+</v-card>
 </template>
 <script>
 
@@ -162,6 +170,8 @@ export default {
       docType: null,
       numDoc: '',
       personalTerms: false,
+      showPassword:false,
+      showPassword2:false
 
     }),
 
@@ -204,7 +214,8 @@ export default {
         })
         .catch((err)=>console.error(err));
       },
-      ...mapActions('snackBar', ['showSnackBar'])
+      ...mapActions('snackBar', ['showSnackBar']),
+      
     },
   }
 </script>

@@ -42,18 +42,22 @@
         align="right"
         align-self="center"
         v-if="$vuetify.breakpoint.smAndDown">
-          <v-btn
-            v-for="link in navLinks"
-            :key="link.name"
-            :to="{name:`${link.name}`}"
-            plain
-            dark
-            class="my-2 d-flex d-md-inline-flex"
-          >
+          <div v-for="(link, index) in navLinks" 
+              :key="link.name">
+            <v-btn
+              v-if="link.show"
+              :to="{name:`${link.name}`}"
+              @click="changeLoginMenuButtons(index)"
+              plain
+              dark
+              class="my-2 d-flex d-md-inline-flex"
+            >
+              
+              <v-icon class="pb-1 pr-1">{{link.icon}}</v-icon>
+              {{ link.text }}
+            </v-btn>
             
-            <v-icon class="pb-1 pr-1">{{link.icon}}</v-icon>
-            {{ link.text }}
-          </v-btn>
+          </div>
       </v-col>
     </v-row>
   </v-footer>
@@ -61,12 +65,15 @@
 
 <script>
 
-import {mapState} from 'vuex'
+import {mapState, mapActions} from 'vuex'
 
 export default ({
   computed:{
     ...mapState('globals', ['appName','navLinks']),
     ...mapState('event', ['eventCategories'])
+  },
+  methods: {
+    ...mapActions('globals',['changeLoginMenuButtons'])
   }
 })
 </script>

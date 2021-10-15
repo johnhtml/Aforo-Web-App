@@ -1,6 +1,7 @@
 const express = require("express");
 const EventsController = require("../controllers/eventsController");
 const SignupController = require("../controllers/signupController");
+const LoginController = require("../controllers/loginController");
 const router = express.Router();
 
 //GET: todos los eventos
@@ -12,6 +13,7 @@ const router = express.Router();
 //-signup routes--------------------------------------------------------------------
 
 router.post("/user", SignupController.insertNewUser);
+router.post("/authenticate", LoginController.validateUser);
 
 
 module.exports = router

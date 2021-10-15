@@ -19,14 +19,11 @@ export default {
   },
   actions: {
     showSnackBar({ commit }, message = undefined) {
+      
+          console.log(message);
       commit("SET_MESSAGE", message == undefined || message == null ? "mensaje de prueba" : message)
       commit("SET_SNACKBAR", true);
       setTimeout(function () { commit("SET_SNACKBAR", false) }, 2000);
-    },
-    hideSnackBar({ commit }) {
-      commit("SET_SNACKBAR", false);
-      commit("SET_MESSAGE", "");
-      commit("SET_TIMEOUT", 2000);
-    },
+    }
   },
 };
