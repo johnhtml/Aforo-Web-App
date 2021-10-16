@@ -1,24 +1,24 @@
 <template>
   <div class="home">
-  
     <CarouselComponent></CarouselComponent>
-    <HomeContentComponent></HomeContentComponent>
+    <HomeListComponent></HomeListComponent>
   </div>
 </template>
 
 <script>
-import CarouselComponent from '../components/CarouselComponent.vue';
-import HomeContentComponent from '../components/HomeContentComponent.vue';
 
+
+import CarouselComponent from '../components/homeViewComponents/CarouselComponent.vue';
+import HomeListComponent from "../components/homeViewComponents/HomeListComponent.vue";
 export default {
   components: {
     CarouselComponent,
-    HomeContentComponent
+    HomeListComponent
   },
   data() {
     return {
       name: "Home",
     };
-  },
+  }
 };
 </script>

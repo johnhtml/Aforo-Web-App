@@ -1,55 +1,44 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" app bottom floating temporary>
-      <Menu></Menu>
-    </v-navigation-drawer>
-
-    <v-app-bar app absolute color="pink darken-2">
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-
-      <v-toolbar-title>Aforo App</v-toolbar-title>
-
-      <v-spacer></v-spacer>
-
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-
-      <!-- <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn> -->
-
-      <!-- <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn> -->
-    </v-app-bar>
-
-    <!-- Sizes your content based upon application components -->
-    <v-main>
-      <!-- Provides the application the proper gutter -->
-      <v-container fluid>
-        <!-- If using vue-router -->
-        <router-view></router-view>
-      </v-container>
-    </v-main>
-    <v-spacer>_</v-spacer>
-    <v-footer absolute inset app dark padless bottom>
-      <Footer></Footer>
-    </v-footer>
+    <nav-bar/>
+    <main-content/>
+    
+    <snack-bar v-if="snackBar"
+      :snackbar="snackBar"
+      :text="message"
+      :timeout="2000"
+    />
+    <app-footer/>
   </v-app>
 </template>
 
+
 <script>
-import Menu from "./components/MenuComponent";
-import Footer from "./components/FooterComponent";
+import NavBar from './components/appBarComponents/NavBar.vue'
+// import DrawerNavBar from './components/appBarComponents/drawerNavBar.vue'
+import MainContent from './components/MainContent.vue'
+import AppFooter from './components/AppFooter.vue'
+import SnackBar from './components/globalComponents/SnackBar.vue'
+
+import { mapState } from 'vuex'
 
 export default {
+  name: 'App',
+
   components: {
-    Menu,
-    Footer
+    NavBar,
+    // DrawerNavBar,
+    MainContent,
+    AppFooter,
+    SnackBar
+
   },
+
   data: () => ({
-    drawer: false
+    showSnackBar: false
   }),
+  computed: {
+    ...mapState('snackBar',['snackBar', 'message'])
+  }
 };
 </script>

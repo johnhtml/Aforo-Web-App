@@ -1,23 +1,24 @@
 <template>
   <div class="user">
-    <h3>This is the User page</h3>
-    <h5>Welcome {{ user.userName }}</h5>
     <v-container class="py-8 px-6" fluid>
       <v-row>
-        <v-col v-for="event in events" :key="event.title" cols="12">
-          <v-card>
-            <v-subheader>{{ title }}</v-subheader>
-
+        <v-col v-for="event in events" :key="event.id" cols="12">
+          <v-card :img="event.image">
             <v-list two-line>
-              <v-list-item :to="{ name: 'Event', params: { id: event.id } }">
-                <v-list-item-avatar color="grey darken-1"> </v-list-item-avatar>
-
+              <v-list-item :to="{ name: 'EventById', params: { id: event._id } }">
+                <!-- <v-list-item-avatar  color="grey darken-1"> </v-list-item-avatar> -->
+                
+                <v-avatar class="mr-4">
+                  <img
+                    :src="event.image"
+                    rounded='0'
+                  >
+                </v-avatar>
                 <v-list-item-content>
-                  <v-list-item-title>Evento {{ event.id }}</v-list-item-title>
+                  <v-list-item-title> {{ event.name }}</v-list-item-title>
 
                   <v-list-item-subtitle>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Nihil repellendus distinctio similique
+                    {{event.description}}
                   </v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
@@ -27,7 +28,7 @@
       </v-row>
 
       <!--Falta agregar interfaz para agregar nuevo evento (agregar en el atributo 'to')-->
-      <v-btn id="addEventButton" color="secondary" dark v-model="user.admin" fab to="">
+      <v-btn id="addEventButton" color="secondary" dark v-model="user.admin" fab to="/NewEvent">
         <v-icon>mdi-plus</v-icon>
       </v-btn>
     </v-container>
@@ -35,28 +36,22 @@
 </template>
 
 <script>
+
+import {mapState} from 'vuex'
+
 export default {
   data: () => ({
-    title: "Eventos",
-    events: [
-      {
-        id: 1,
-        title: "Fiesta de despedida de año en Aquiles S.A.S.",
-        desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus distinctio similiqu.",
-      },
-      {
-        id: 2,
-        title: "Fiesta de despedida de año en les S.A.S.",
-        desc: "Nihil repellendus distinctio similiqu. Lorem ipsum dolor sit amet, consectetur adipisicing elit. ",
-      },
-    ],
     user: {
-      userName: "Carlitos",
       admin: true,
     },
   }),
+  computed:{
+    ...mapState('user' ['user']),
+    ...mapState('event',['events'])
+  },
+  methods:{
+  },
   mounted() {
-    localStorage.setItem("user", JSON.stringify(this.user));
   },
 };
 </script>
