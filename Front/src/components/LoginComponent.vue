@@ -1,5 +1,5 @@
 <template>
-<v-card  class="mx-auto mt-5">
+<v-card  class="mx-auto mt-5" max-width="500px">
   <v-form 
     v-model="valid"
     ref="form"

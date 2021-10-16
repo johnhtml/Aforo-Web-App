@@ -1,13 +1,13 @@
 <template>
 <v-card  class="mx-auto mt-5">
   <v-img v-if="image"
-      :src="image"
+      :src="url"
       height="400px"
   ></v-img>
-  <v-card-title class="text-h4 font-weight-bold" v-bind="name">{{name ? name : "Formulario para crear nuevo evento."}}
+  <v-card-title class="text-h4 font-weight-bold" v-model="name">{{name ? name : "Formulario para crear nuevo evento."}}
   </v-card-title>
 
-  <v-card-subtitle v-bind="description">{{description ? description : ""}}
+  <v-card-subtitle v-model="description">{{description ? description : ""}}
   </v-card-subtitle>
   <v-form 
     v-model="valid"
@@ -18,43 +18,40 @@
     <v-text-field v-model="name"
       type="text"
       required
-      :counter="30"
+      :counter="50"
       label="Nombre del evento"
       placeholder="Ingrese el nombre del evento"
       :rules="[
         v => !! v || '*Requerido: Ingrese el nombre del evento.',
-        v => (v && v.length >= 1 && v.length <= 30) || 'El nombre del evento debe tener entre 1 y 30 caracteres.',
+        v => (v && v.length >= 1 && v.length <= 50) || 'El nombre del evento debe tener entre 1 y 50 caracteres.',
       ]"
     ></v-text-field>
     
     <!-- descripción del evento -->
     <v-text-field v-model="description"
       type="text"
-      :counter="100"
+      :counter="500"
       label="Descripción"
       placeholder="Ingrese una breve descripción del evento"
       :rules="[
-        v => (v && v.length <= 100) || 'La descripción del evento debe tener máximo 100 caracteres.',
+        v => (v && v.length <= 500) || 'La descripción del evento debe tener máximo 500 caracteres.',
       ]"
     ></v-text-field>
 
-    
-    <!-- imagen del evento -->
-    <v-text-field v-model="image"
-      required
-      type="url"
-      label="Imagen del evento"
-      prepend-icon="mdi-image-plus"
-      @click:prepend="showPassword = !showPassword"
+    <v-file-input v-model="image"
+      accept="image/png, image/jpeg, image/bmp"
       placeholder="Seleccione una imagen para el evento o ingrese la url de la imagen."
+      prepend-icon="mdi-camera"
+      label="Imagen del evento"
+      @change="onFileChange"
       :rules="[
-        v => (v && v.length <= 100) || 'La descripción del evento debe tener máximo 100 caracteres.',
+        value => (value && value.size < 2000000) || 'La imagen debe pesar menos de 2 MB!',
       ]"
-    ></v-text-field>
+  ></v-file-input>
 
     <!-- precio  -->
-    <v-text-field v-model="precio"
-      type="number"
+    <v-text-field v-model="price"
+      type="Decimal128"
       label="Precio de la entrada"
       placeholder="Ingrese el precio del evento"
     ></v-text-field>
@@ -164,28 +161,86 @@
   </v-card>
     <v-divider class="my-4"></v-divider>
     <div class="mt-5 d-flex">
-      <v-btn class="mr-4"  color="success" :to="{name:'Signup'}">Limpiar</v-btn>
-      <v-btn :disabled="!valid" color="info" @click="loginFunction()">Guardar</v-btn>
+      <v-btn class="mr-4"  color="success" @click="resetForm">Limpiar</v-btn>
+      <v-btn :disabled="!valid" color="info" @click="createNewEvent()">Guardar</v-btn>
     </div>
   </v-form>
 </v-card>
 </template>
 
 <script>
+  import { createEvent, createEventWithImage } from '../Services/EventsService'
+  import {mapActions} from 'vuex' 
   export default {
     data: () => ({
+      valid : false,
       name:'',
       description:'',
       dates: [],
       menu: false,
-      chips: ['Programming', 'Playing video games', 'Watching movies', 'Sleeping'],
-      items: ['Streaming', 'Eating'],
-      image:""
-    }),methods: {
+      chips: [],
+      items: [],
+      image:null,
+      price:null,
+      url: null
+    }),
+    methods: {
       remove (item) {
         this.chips.splice(this.chips.indexOf(item), 1)
         this.chips = [...this.chips]
       },
+      onFileChange() {
+        this.url = this.image == null || this.image == undefined ? this.image : URL.createObjectURL(this.image);
+      },
+      resetForm () {
+        this.$refs.form.reset()
+        this.$refs.form.resetValidation()
+      },
+      ...mapActions('snackBar', ['showSnackBar']),
+      createNewEvent(){
+
+        let request = null;
+        if (this.image != null && this.image != undefined) {
+          const event = new FormData()
+          event.append('name', this.name)
+          event.append('description', this.description)
+          event.append('price', this.price)
+          for (let i = 0; i < this.dates.length; i++) {
+          let date = this.dates[i];
+          event.append("eventDates[" + i + "]", date);
+          }
+          // event.append('eventDates', this.dates)
+            event.append('image', this.image)
+          // event.append('categories', this.chips)
+          
+          for (let i = 0; i < this.chips.length; i++) {
+          let chip = this.chips[i];
+            event.append("categories[" + i + "]", chip);
+          }
+          request = createEventWithImage(event)
+        }
+        else {
+          const event = {
+            name: this.name,
+            description: this.description,
+            price: this.price,
+            eventDates: this.dates,
+            image: this.image,
+            categories: this.chips
+
+          }
+
+          request = createEvent(event)
+        }
+
+        request
+          .then((res) =>
+            this.showSnackBar(
+              `Se creo el evento ${res.data.name}`
+            )
+          )
+          .catch(() => this.showSnackBar("Error al guardar el evento"))
+      }
     }
   }
 </script>

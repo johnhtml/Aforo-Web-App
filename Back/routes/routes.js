@@ -4,10 +4,26 @@ const SignupController = require("../controllers/signupController");
 const LoginController = require("../controllers/loginController");
 const router = express.Router();
 
+// Carga de archivos
+const multer = require("multer");
+const storageConfig = multer.diskStorage({
+    destination: (req, res, cb) => {
+        cb(null, "./uploads");
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
+    }
+});
+
+const upload = multer({ storage: storageConfig });
+ 
+
+
+
 //GET: todos los eventos
   router.get("/events", EventsController.getAllEvents);
   //POST: Crear un nuevo evento en la colección eventos.
-  
+  router.post('/events', upload.single("image"), EventsController.createEvent)
 
 
 //-signup routes--------------------------------------------------------------------

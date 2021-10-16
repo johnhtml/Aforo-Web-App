@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col sm="12" md="6" lg="4" v-for="event in events" :key="event._id" >
-      <v-card :loading="event.loading" class="mx-auto my-12" max-width="400" min-height="550">
+      <v-card :loading="event.loading" class="mx-auto my-12" max-width="400" min-height="500">
         <template slot="progress">
           <v-progress-linear
             color="deep-purple"
@@ -25,23 +25,33 @@
 
         <v-divider class="mx-4"></v-divider>
 
-        <v-card-title>Fechas disponibles</v-card-title>
+        <v-card-title>Fechas disponibles - Precio {{event.price | toCurrency}}</v-card-title>
 
-        <v-card-text>
-          <v-chip-group
-            v-model="event.selection"
-            active-class="deep-purple accent-4 white--text"
-            column
+          <v-combobox
+            class="container"
+            v-model="model"
+            :items="event.eventDates"
+            item-text="eventDate"
+            item-value="eventDate"
+            return-object
+            :search-input.sync="search"
+            hide-selected
+            label="Fechas seleccionadas"
+            multiple
+            persistent-hint
+            small-chips
           >
-            <v-chip v-for="date in event.eventDates" :key="date.id">{{ date.eventDate.toString() | longDate }}</v-chip>
-          </v-chip-group>
-        </v-card-text>  
+          <template v-slot:no-data>
+            <v-list-item>
+              <v-list-item-content>
+                <v-list-item-title>
+                  No results matching "<strong>{{ search }}</strong>". Press <kbd>enter</kbd> to create a new one
+                </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </template>
+        </v-combobox>
 
-        <v-card-actions>
-          <v-btn color="deep-purple lighten-2" text @click="reserve(evento) " :to="{ name: 'EventById', params: { id: event._id } }">
-            Ver
-          </v-btn>
-        </v-card-actions>
       </v-card>
     </v-col>
   </v-row>
@@ -52,9 +62,20 @@ import {mapState, mapActions} from 'vuex'
 
 export default {
   data: () => ({
+    items: [],
+      model: [],
+      search: null,
+    scrollInvoked: 0,
   }),
   computed:{
     ...mapState('event', ['events'])
+  },
+  watch: {
+      model (val) {
+        if (val.length > 5) {
+          this.$nextTick(() => this.model.pop())
+        }
+      },
   },
   methods: {
     reserve(evento) {
@@ -63,7 +84,11 @@ export default {
       setTimeout(() => (evento.loading = false), 2000);
     },
     
-    ...mapActions('event', ['getAllEventsAction'])
+    ...mapActions('event', ['getAllEventsAction']),
+    onScroll () {
+        this.scrollInvoked++
+      },
+      
   },
   mounted () {
     this.getAllEventsAction()

@@ -11,6 +11,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', require("./routes/routes"))
+// Carga de archivos
+app.use(express.static("uploads"));
 app.use(morgan('dev'))
 
 //Iniciar el servidor

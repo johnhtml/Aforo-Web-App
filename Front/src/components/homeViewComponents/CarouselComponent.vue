@@ -12,6 +12,7 @@
       <v-sheet height="100%">
         <v-row class="fill-height" align="center" justify="center">
           <v-img height="100%" :src="event.image" >
+            
             <!-- <div class="d-flex justify-center text-h2 mt-10">  {{ event.name }} </div> -->
           </v-img>
         </v-row>

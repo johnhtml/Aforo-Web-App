@@ -11,4 +11,17 @@ module.exports = class eventsController {
     }
   }
 
-}
+  static async createEvent(req, res) {
+    try {
+      const event = req.body
+      if (req.file != undefined) {
+        const imageName = req.file.filename;
+        event.image = "/" + imageName
+      }
+        const newEvent = await eventModel.create(event)
+        res.status(201).json(newEvent)
+    } catch (error) {
+        res.status(400).json({message: error.message})
+      }
+    }
+  }

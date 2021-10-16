@@ -1,7 +1,7 @@
 <template>
   <div class="event">
     <h3>
-      This is the event {{ $route.params.id }} page by {{ userName }}.
+       {{ $route.params.id }}
     </h3>
 
     <v-card class="mx-auto" max-width="1200">
@@ -42,7 +42,7 @@
       </v-expand-transition>
 
       <!--Falta agregar interfaz para editar el evento nuevo evento (agregar en el atributo 'to')-->
-      <v-btn id="editEventButton" color="secondary" dark :to="{ name: 'User', params: { id: event._id } }">
+      <v-btn id="editEventButton" color="secondary" dark :to="{ name: 'User',    params: { id: event._id } }">
         <v-icon class="pb-1 pr-1">mdi-file-document-multiple</v-icon>Todos los eventos
       </v-btn>
     </v-card>
@@ -53,7 +53,7 @@
 
 <script>
 
-import {mapState, mapGetters} from 'vuex'
+import {mapGetters} from 'vuex'
 
 import { mdiGreasePencil } from '@mdi/js'; 
 
@@ -62,21 +62,16 @@ export default {
     show: false,
     user: JSON.parse(localStorage.getItem("user")),
     mdiGreasePencil: mdiGreasePencil,
-    //event:[]
+    event:[]
   }),
   computed:{
-    events: mapState('user',['userName']),
-    ...mapGetters('event', ['getEventById'])
+    events:{...mapGetters('event', ['getEventById'])
   },
-  mounted () {
-    this.event = this.getEventById(this.$route.params.id) 
-  },
-};
-</script>
-
-<style>
-#editEventButton {
-  margin-top: 50px;
-  float: inline-end;
+  mounted: {
+    loadEvent() {
+      this.event = this.getEventById(this.$route.params.id) 
+    }
+    },
+  }
 }
-</style>
+</script>

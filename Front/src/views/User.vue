@@ -1,6 +1,5 @@
 <template>
   <div class="user">
-    <h5>Hola {{ userName }}</h5>
     <v-container class="py-8 px-6" fluid>
       <v-row>
         <v-col v-for="event in events" :key="event.id" cols="12">
@@ -29,7 +28,7 @@
       </v-row>
 
       <!--Falta agregar interfaz para agregar nuevo evento (agregar en el atributo 'to')-->
-      <v-btn id="addEventButton" color="secondary" dark v-model="user.admin" fab to="">
+      <v-btn id="addEventButton" color="secondary" dark v-model="user.admin" fab to="/NewEvent">
         <v-icon>mdi-plus</v-icon>
       </v-btn>
     </v-container>
@@ -47,19 +46,12 @@ export default {
     },
   }),
   computed:{
-    ...mapState('user' ['userName']),
+    ...mapState('user' ['user']),
     ...mapState('event',['events'])
   },
   methods:{
-    // ...mapActions(['getAllEventsAction']),
-    // validarEventos: () => {
-    //   if (!this.events.length){
-    //     'getAllEventsAction'
-    //   }
-    // }
   },
   mounted() {
-    this.validarEventos()
   },
 };
 </script>

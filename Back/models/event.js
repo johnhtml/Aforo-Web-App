@@ -1,14 +1,12 @@
 const mongoose = require('mongoose')
 
 const eventSchema = new mongoose.Schema({
-  _id: { type: mongoose.Schema.Types.ObjectId },
-  name: { type: String },
-  description: { type: String },
-  price: { type: mongoose.Schema.Types.Decimal128 },
-  eventDates: [
-    { eventDate: { type: Date } }
-  ],
-  image:{type:String}
-})
+  name: String,
+  description: String,
+  price: Number,
+  eventDates: Array,
+  image: String,
+  categories: Array,
+});
 
 module.exports = mongoose.model('Event', eventSchema, 'Events')
